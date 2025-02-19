@@ -1,0 +1,280 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar remains fixed at the top */
+.navbar {
+    display: flex;  /* Enables flexbox */
+    justify-content: space-between;
+    align-items: start;
+    padding-top: 20px;
+    background-color: #12022b;
+    width: 100vw;
+    height: 10vh;
+    font-size: 3.0vw;
+    color: white;
+}
+
+.logo {
+    font-weight: bold;
+    padding-left: 3%;
+}
+
+.logo span {
+    color: #c084fc;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 8%;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.65em;
+}
+
+.signup {
+    background-color: white;
+    color: #12022b;
+    border: none;
+    margin-top: 1.5%;
+    padding-top: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.tag {
+    background: #c084fc;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 1.3rem;
+}
+
+h1 {
+    margin-top: 20px;
+    width: 650px;
+    font-size: 4.5rem;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.cta {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+}
+
+/* Hero section covers the full viewport height */
+.hero {
+    background-image: url('/Media/Pics/background.jpg'); /* Replace with your actual image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Ensures it stays in place */
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full height */
+    align-items: flex-start;
+    justify-content: first baseline;
+    padding: 300px 20px;
+}
+
+/* Ensures text appears above the background */
+.hero-content {
+    position: relative;
+    z-index: 10; /* Makes sure it's above the background */
+    color: white;
+}
+
+/* Optional: Dark overlay to improve text readability */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.filler {
+    background-color: rgb(17, 0, 65);
+    height: 20px;
+    width: 100vw;
+}
+
+.title {
+    font-family: "Domine", serif;
+    color: white;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 5rem;
+    margin-left: -10%;
+    z-index: 1;
+}
+
+.main-content {
+    background-image: url('/Media/Pics/blindJusticelady.png'); /* Replace with your actual image */
+    background-size: contain;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: grid;
+    background-color: purple;
+    height: 1200px;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+.services {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 10px;
+    column-gap: 10px;
+    justify-content: center;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(15px); /* Slight downward offset */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* When in view, it fades in and moves up */
+.services.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.box {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.95);
+    border: solid rgb(0, 0, 0) 1px;
+    height: 15vw;
+    width: 25vw;
+    font-size: 20px;
+    position: relative;
+    overflow: hidden;
+    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: transform 1s ease-in-out; /* Ensures smooth scaling on both hover-in and hover-out */
+}
+
+/* Dark overlay effect using a pseudo-element */
+.box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Initially transparent */
+    transition: background-color 0.5s ease-in-out; /* Smooth transition */
+    z-index: -1;
+}
+
+/* When the user hovers over the box, the overlay darkens */
+.box:hover::after {
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay appears */
+}
+
+.box:hover {
+    transform: scale(1.03, 1.05);
+}
+
+.text {
+    opacity: 0.25; /* Initially invisible */
+    transform-origin: left center; /* Ensures scaling doesn't shift weirdly */
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out; /* Separate transition for the text movement */
+}
+
+.box:hover .text {
+    opacity: 1; /* Becomes visible */
+    transform: translate(10px, 10px) scale(1.5, 1.5);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        font-size: 4vw;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 5%;
+    }
+
+    .hero {
+        padding: 150px 10px;
+    }
+
+    .title {
+        font-size: 3rem;
+        margin-left: 0;
+    }
+
+    .main-content {
+        height: auto;
+        padding: 20px;
+    }
+
+    .box {
+        width: 100%;
+        height: auto;
+    }
+
+    h1 {
+        width: 100%;
+        font-size: 2.5rem;
+    }
+
+    .cta {
+        font-size: 1.5rem;
+        padding: 10px;
+    }
+
+    .hero-image img {
+        width: 100%;
+        max-width: 300px;
+    }
+}

@@ -1,0 +1,57 @@
+
+  
+
+    .services > :nth-child(1){
+
+        background-image: url("/Media/Pics/lawBooks.png");
+        
+        }
+        
+
+    .services > :nth-child(2){
+
+        background-image: url("/Media/Pics/caseStudy.jpg");
+        
+        }
+
+    .services > :nth-child(3){
+
+        background-image: url("/Media/Pics/precedents.jpg");
+        
+        }
+
+    .services > :nth-child(4){
+
+        background-image: url("/Media/Pics/caseProfile.webp");
+        
+        }
+
+    .services > :nth-child(5){
+
+        background-image: url("/Media/Pics/criminalRecord.webp");
+        
+        }
+
+    .services > :nth-child(6){
+
+        background-image: url("/Media/Pics/lawyer.jpg");
+        
+        }
+
+    .services > :nth-child(7){
+
+        background-image: url("/Media/Pics/court.jpg");
+        
+        }
+
+    .services > :nth-child(8){
+
+        background-image: url("/Media/Pics/judge.jpg");
+        
+        }
+
+    .services > :nth-child(9){
+
+        background-image: url("/Media/Pics/search.webp");
+        
+        }
