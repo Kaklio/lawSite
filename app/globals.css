@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Press+Start+2P&display=swap');
+/* font-family: "Domine", serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Press+Start+2P&display=swap');
+/* font-family: "Inter", sans-serif; */
+
+
+@import "tailwindcss";
+
+@layer base {
+    :root {
+      --dark-purple: #12022b; /* Custom purple */
+      --dark-green: #012706;
+    }
+
+  
+
+    .purple-bg {
+        background-color: var(--dark-purple) !important;
+      }
+    .green-bg {
+        background-color: var(--dark-green) !important;
+      }
+
+}  
