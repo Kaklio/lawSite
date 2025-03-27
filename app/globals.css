@@ -5,7 +5,9 @@
 /* font-family: "Inter", sans-serif; */
 
 
+
 @import "tailwindcss";
+
 
 @layer base {
     :root {

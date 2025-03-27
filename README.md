@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Requirements:
 
-## Getting Started
+###  1. Download and Install Node js
+###  2. Download and MongoDB
+###  3. Get the Official MongoDB and Tailwind Extensions in VScode
+---------------
 
-First, run the development server:
+#### Run this command in an empty directory (This will be the root folder/directory)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+npx create-next-app@latest
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### These Options will appear (Pick the Highlighted option)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Would you like to use TypeScript? **No** / Yes
+2. Would you like to use ESLint? No / **Yes**
+3. Would you like to use Tailwind CSS? No / **Yes**
+4. Would you like your code inside a `src/` directory? **No** / Yes
+5. Would you like to use App Router? (recommended) No / **Yes**
+6. Would you like to use Turbopack for `next dev`?  No / **Yes**
+7. Would you like to customize the import alias (`@/*` by default)? **No** / Yes
+8. What import alias would you like configured? @/* **No** / Yes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---------------
 
-## Learn More
+#### Now Clone this Repository into the root directory, Run
+```
+git clone https://github.com/Kaklio/lawSite
+```
+Make sure the files cloned from the repository replace all local duplicates
 
-To learn more about Next.js, take a look at the following resources:
+#### Now Run (package.json json must be in root folder)
+```
+npm install
+```
+This will install all required packages from node package manager
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Now Create a  ` .env.local` file in the root folder, it should have:
+```
+EMAIL_USER=YourEmail
+EMAIL_PASS=GoogleAppPassword 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+MONGODB_URI=mongodb://localhost:27017/Accounts
 
-## Deploy on Vercel
+JWT_SECRET=OnlineGeneratedJWT
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+NEXTAUTH_SECRET=3j2+z8hQ9F1l2MxOyG5KX4QHzXf/YUfnQhPTzPxYDAk=
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Replace "YourEmail" with your email*
+
+*Replace "GoogleAppPassword" with the google app password for the SAME email*
+
+*(Search "app password" in your google account home page to generate one)*
+
+*Generate and paste a JWT_SECRET online and paste in place of "OnlineGeneratedJWT"*
+
+*For "NEXTAUTH_SECRET" use:*
+`openssl rand -base64 32` *command to get a random 32-character string*
+
+#### Finally Run:
+```
+npm run dev
+```
+#### Now Ctrl + Click on http://localhost:3000 or whatever link served to open the site 
