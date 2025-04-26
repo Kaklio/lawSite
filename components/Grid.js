@@ -7,14 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 
 const services = [
   { name: "Law Books", href: "/lawBooks.png", link: "/lawBooks" },
-  { name: "Case Study", href: "/caseStudy.jpg", link: "/lawBooks" },
-  { name: "Precedents", href: "/precedents.jpg", link: "/lawBooks" },
+  { name: "Case Study", href: "/caseStudy.jpg", link: "/lawSearch" },
+  { name: "Precedents", href: "/precedents.jpg", link: "/lawSearch" },
   { name: "Case Profile", href: "/caseProfile.webp", link: "/lawBooks" },
   { name: "Criminal Record", href: "/criminalRecord.webp", link: "/lawBooks" },
   { name: "Find a lawyer", href: "/lawyer.jpg", link: "/lawBooks" },
   { name: "Courts", href: "/court.jpg", link: "/lawBooks" },
   { name: "Judges", href: "/judge.jpg", link: "/lawBooks" },
-  { name: "Search Laws", href: "/search.webp", link: "/lawBooks" }
+  { name: "Search Laws", href: "/search.webp", link: "/lawSearch" }
 ];
 
 export default function Grid() {

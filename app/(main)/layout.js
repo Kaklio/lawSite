@@ -23,15 +23,20 @@ export const metadata = {
 
 export default function MainLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className="h-full">
+      <body className="min-h-screen flex flex-col bg-purple-950 text-white">
         <SessionWrapper>
-        <ProviderWrapper> {/* ✅ Wrap with Redux provider */}
-          <Navbar />
-          {children}
-          <Footer />
-        </ProviderWrapper>
-          </SessionWrapper>
+          <ProviderWrapper>
+            <Navbar />
+
+            {/* This makes the main content grow and push footer down */}
+            <main className="flex-1">
+              {children}
+            </main>
+
+            <Footer />
+          </ProviderWrapper>
+        </SessionWrapper>
       </body>
     </html>
   );

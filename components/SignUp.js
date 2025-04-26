@@ -106,7 +106,6 @@ const accountSubmit = async (e) => {
       if (result?.error) {
         alert("Login failed: " + result.error);
       } else {
-        alert("Logged in successfully!");
         onClose(); // Close modal after login
       }
     } else {
@@ -116,7 +115,6 @@ const accountSubmit = async (e) => {
     console.error("Signup error:", error);
   }
 };
-
 
   const router = useRouter(); // Move useRouter here
 

@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/legal_vector_store
 /.pnp
 .pnp.*
 .yarn/*
