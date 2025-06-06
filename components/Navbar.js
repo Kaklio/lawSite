@@ -26,8 +26,17 @@ const Navbar = () => {
     <>
       <nav className={`flex flex-col md:flex-row purple-bg text-white md:justify-between items-center font-['Inter'] border-b-2 border-b-amber-50`}>
         <div className="flex text-3xl xl:text-4xl 2xl:text-5xl m-5 font-bold">
-          <span>Sentinel</span>
-          <span className="text-purple-400">Associates</span>
+          <Link
+            href="/"
+            className="group  hover:scale-x-[101%] hover:scale-y-[104%] flex items-center transition-all duration-400 ease-in-out"
+          >
+            <span className="group-hover:text-purple-400 transition-all duration-400 ease-in-out">
+              Sentinel
+            </span>
+            <span className="text-purple-400 group-hover:text-white  transition-all duration-400 ease-in-out">
+              Associates
+            </span>
+          </Link>
         </div>
         <ul className="flex gap-8 text-2xl xl:text-2xl 2xl:text-3xl  xl:my-7 mx-7">
           <Link href="/" className="hover:text-purple-600 transition-all duration-400 ease-in-out">
@@ -41,7 +50,7 @@ const Navbar = () => {
           </Link>
         </ul>
 
-        <div className={`${session?"":"hidden"}  md:flex gap-8 my-4 xl:my-0 mx-8`}>
+        <div className={`${session ? "" : "hidden"}  md:flex gap-8 my-4 xl:my-0 mx-8`}>
           {/* Show Login/Signup if NOT logged in */}
           {!session ? (
             <>

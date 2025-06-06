@@ -28,7 +28,7 @@ const { data: session } = useSession(); // Get session data
 
     <section
       className="relative h-screen flex flex-col justify-center sm:items-start itmes-center bg-cover bg-center bg-no-repeat "
-      style={{ backgroundImage: "url('/assets/images/background.jpg')" }}
+      style={{ backgroundImage: "url('/assets/images/homePage/background.jpg')" }}
     >
       {/* <div className="text-5xl text-white z-10">{count}{count2}</div> */}
       {/* <button className="bg-amber-50 text-3xl hover:bg-amber-300 z-10" onClick={ ()=>dispatch(increment())}>+</button> */}
@@ -49,12 +49,17 @@ const { data: session } = useSession(); // Get session data
         <p className="text-lg xl:text-xl 2xl:text-2xl mt-4 ">
           Get all the insights of law and legal minds at one place without much hassle.
         </p>
-        <button
-          type="button"
-          className="mt-6 sm:mt-8 font-bold text-lg xl:text-xl 2xl:text-3xl text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br px-2 py-1 rounded-xl xl:rounded-2xl 2xl:rounded-3xl xl:px-4 xl:py-2 2xl:px-6 2xl:py-3"
-        >
-          Get Started
-        </button>
+<button
+  type="button"
+  className="mt-6 sm:mt-8 font-bold text-lg xl:text-xl 2xl:text-3xl text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br px-2 py-1 rounded-xl xl:rounded-2xl 2xl:rounded-3xl xl:px-4 xl:py-2 2xl:px-6 2xl:py-3"
+  onClick={() => {
+    document.getElementById('services-grid')?.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }}
+>
+  Get Started
+</button>
       </div>
 
       {/* Buttons */}

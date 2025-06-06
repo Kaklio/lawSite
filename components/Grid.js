@@ -6,15 +6,15 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 const services = [
-  { name: "Law Books", href: "/lawBooks.png", link: "/lawBooks" },
-  { name: "Case Study", href: "/caseStudy.jpg", link: "/lawSearch" },
-  { name: "Precedents", href: "/precedents.jpg", link: "/lawSearch" },
-  { name: "Case Profile", href: "/caseProfile.webp", link: "/lawBooks" },
-  { name: "Criminal Record", href: "/criminalRecord.webp", link: "/lawBooks" },
-  { name: "Find a lawyer", href: "/lawyer.jpg", link: "/lawBooks" },
-  { name: "Courts", href: "/court.jpg", link: "/lawBooks" },
-  { name: "Judges", href: "/judge.jpg", link: "/lawBooks" },
-  { name: "Search Laws", href: "/search.webp", link: "/lawSearch" }
+  { name: "Law Books", href: "/homePage/lawBooks.png", link: "/lawBooks" },
+  { name: "Legal Precedents", href: "/homePage/LegalPrecedents.jpg", link: "/lawSearch" },
+  { name: "Legal Queries", href: "/homePage/LegalQueries.webp", link: "/legalQueries" },
+  { name: "Case Profile", href: "/homePage/caseProfile.webp", link: "/lawBooks" },
+  { name: "Criminal Record", href: "/homePage/criminalRecord.webp", link: "/CriminalRecord" },
+  { name: "Find a lawyer", href: "/homePage/lawyer.jpg", link: "/lawyerSearch" },
+  { name: "Courts", href: "/homePage/court.jpg", link: "/lawBooks" },
+  { name: "Judges", href: "/homePage/judge.jpg", link: "/lawBooks" },
+  { name: "Search Laws", href: "/homePage/search.webp", link: "/lawSearch" }
 ];
 
 export default function Grid() {
@@ -44,16 +44,14 @@ export default function Grid() {
   return (
 
 
-
     <div  
+    id="services-grid" 
     ref={gridRef} 
       className="relative flex flex-col items-center justify-center bg-purple-900 h-[1200px] w-full bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/assets/images/blindJusticelady.png')" }}
+      style={{ backgroundImage: "url('/assets/images/homePage/blindJusticelady.png')" }}
     >
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black opacity-30"></div>
-
-
 
       <h2 className="relative text-5xl font-light text-white font-[Domine] md:text-3xl">
         Sentinel Services

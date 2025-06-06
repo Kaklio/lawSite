@@ -13,7 +13,7 @@ async function initializeClients() {
   if (!vectorStore) {
     const embeddings = new HuggingFaceInferenceEmbeddings({
       apiKey: process.env.HF_API_KEY,
-      model: "jinaai/jina-embeddings-v2-base-en",
+      model: "BAAI/bge-base-en-v1.5",
     });
 
     // Verify dimensionality

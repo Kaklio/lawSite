@@ -1,173 +1,253 @@
-'use client';
+"use client";
 
-import { useState, useRef, useEffect } from 'react';
-import { SendHorizontal, ChevronDown, ChevronUp } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { FiSearch, FiDownload, FiChevronDown, FiChevronUp, FiX, FiFilter } from 'react-icons/fi';
 
 export default function LawSearch() {
-  const [question, setQuestion] = useState('');
-  const [messages, setMessages] = useState([]); // [{ role: 'user' | 'bot', text: string, thinkText?: string }]
-  const [loading, setLoading] = useState(false);
-  const [expandedThinks, setExpandedThinks] = useState({});
-  const containerRef = useRef(null);
+  const [laws, setLaws] = useState([]);
+  const [filteredLaws, setFilteredLaws] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [sortConfig, setSortConfig] = useState({ 
+    key: 'year', 
+    direction: 'desc' 
+  });
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const toggleThink = (index) => {
-    setExpandedThinks(prev => ({
-      ...prev,
-      [index]: !prev[index]
+  useEffect(() => {
+    const fetchLaws = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch('/api/laws');
+        if (!response.ok) throw new Error('Failed to fetch laws');
+        const data = await response.json();
+        setLaws(data.laws);
+        setFilteredLaws(data.laws);
+        setCategories(data.categories);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchLaws();
+  }, []);
+
+  useEffect(() => {
+    let results = [...laws];
+
+    // Apply category filter
+    if (selectedCategory !== 'All') {
+      results = results.filter(law => law.category === selectedCategory);
+    }
+
+    // Apply search filter
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      results = results.filter(law => 
+        law.title.toLowerCase().includes(term) || 
+        law.number.toString().includes(term)
+      );
+    }
+
+    // Apply sorting
+    results.sort((a, b) => {
+      if (sortConfig.key === 'year') {
+        // Handle null years by putting them at the end
+        if (a.year === null) return 1;
+        if (b.year === null) return -1;
+        return sortConfig.direction === 'asc' 
+          ? a.year - b.year 
+          : b.year - a.year;
+      } else {
+        return sortConfig.direction === 'asc'
+          ? a.title.localeCompare(b.title)
+          : b.title.localeCompare(a.title);
+      }
+    });
+
+    setFilteredLaws(results);
+  }, [laws, searchTerm, selectedCategory, sortConfig]);
+
+  const handleSort = (key) => {
+    setSortConfig(prev => ({
+      key,
+      direction: prev.key === key 
+        ? prev.direction === 'asc' ? 'desc' : 'asc'
+        : 'desc'
     }));
   };
 
-  const handleAsk = async () => {
-    if (!question.trim()) return;
-
-    const userQuestion = question;
-    setQuestion('');
-    setLoading(true);
-
-    // Add user message
-    setMessages((prev) => [...prev, { role: 'user', text: userQuestion }]);
-
-    try {
-      const response = await fetch('/api/ask', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ question: userQuestion }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        // Extract think text and main answer
-        const fullText = data.answer;
-        const thinkMatch = fullText.match(/<think>([\s\S]*?)<\/think>/);
-        const thinkText = thinkMatch ? thinkMatch[1].trim() : null;
-        const answerText = fullText.replace(/<think>[\s\S]*?<\/think>/, '').trim();
-
-        setMessages((prev) => [...prev, { 
-          role: 'bot', 
-          text: answerText,
-          thinkText: thinkText 
-        }]);
-      } else {
-        setMessages((prev) => [
-          ...prev,
-          { role: 'bot', text: "Sorry, something went wrong. Please try again." },
-        ]);
-      }
-    } catch (error) {
-      console.error("Error calling /api/ask:", error);
-      setMessages((prev) => [
-        ...prev,
-        { role: 'bot', text: "An error occurred while getting the answer." },
-      ]);
-    } finally {
-      setLoading(false);
-    }
+  const clearSearch = () => {
+    setSearchTerm('');
   };
 
-  useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollTop = containerRef.current.scrollHeight;
-    }
-  }, [messages, loading, expandedThinks]);
-
-  const hasContent = messages.length > 0 || loading;
+  const getSortIcon = (key) => {
+    if (sortConfig.key !== key) return null;
+    return sortConfig.direction === 'asc' 
+      ? <FiChevronUp className="ml-1" /> 
+      : <FiChevronDown className="ml-1" />;
+  };
 
   return (
-    <div className="flex flex-col bg-purple-950 text-white min-h-screen">
-      {/* Chat area */}
-      <div
-        ref={containerRef}
-        className="flex-1 overflow-y-auto px-4 py-6 transition-all duration-300 justify-center flex"
-      >
-        <div className="max-w-2xl w-full space-y-4 flex flex-col">
-          {!hasContent && (
-            <h2 className="text-center text-2xl font-semibold opacity-50">
-              Ask your legal question
-            </h2>
-          )}
+    <div className="min-h-screen bg-gradient-to-br from-[#0a011f] to-[#1a0a3a] text-white">
+      {/* Header */}
+      <header className="bg-[#1a0a3a]/80 backdrop-blur-sm py-8 px-4 shadow-2xl">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#7effe7] to-[#a67cff]">
+            Legal Document Archive
+          </h1>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            Search through the comprehensive collection of laws, acts, and ordinances
+          </p>
+        </div>
+      </header>
 
-          {messages.map((msg, idx) => (
-            <div key={idx} className="w-full">
-              {msg.role === 'user' ? (
-                <div className="bg-purple-800 p-3 rounded-lg shadow-md whitespace-pre-line leading-relaxed self-end text-right max-w-[90%] ml-auto">
-                  {msg.text}
-                </div>
-              ) : (
-                <div className="space-y-2">
-{msg.thinkText && (
-  <div className="bg-[#2a0252] rounded-lg overflow-hidden">
-    <button
-      onClick={() => toggleThink(idx)}
-      className="w-full flex items-center justify-between p-3 text-sm text-purple-200 hover:text-white transition-colors"
-    >
-      <span>{expandedThinks[idx] ? 'Hide thought process' : 'Show thought process'}</span>
-      {expandedThinks[idx] ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-    </button>
-    <div
-      className={`transition-all duration-700 ease-in-out overflow-hidden ${
-        expandedThinks[idx] 
-          ? 'max-h-[1000px] opacity-100' 
-          : 'max-h-0 opacity-0'
-      }`}
-    >
-      <div className="p-3 pt-0 text-sm text-purple-100 whitespace-pre-line border-t border-purple-900">
-        {msg.thinkText}
-      </div>
-    </div>
-  </div>
-)}
-                  <div className={`bg-[#340259] p-3 rounded-lg shadow-md whitespace-pre-line leading-relaxed`}>
-                    {msg.text.startsWith('Article') || msg.text.startsWith('**Answer:**') ? (
-                      <div className="space-y-2">
-                        <h3 className="text-xl font-bold text-purple-100 bg-purple-900/50 px-2 py-1 rounded">
-                          {msg.text.startsWith('Article') ? 'Legal Answer' : 'Answer'}
-                        </h3>
-                        <div className="text-white">
-                          {msg.text.replace('**Answer:**', '').trim()}
-                        </div>
-                      </div>
-                    ) : (
-                      msg.text
-                    )}
-                  </div>
+      <main className="max-w-6xl mx-auto py-8 px-4">
+        {/* Search and Filter Controls */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {/* Search Bar */}
+          <div className="relative col-span-1 md:col-span-2">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <FiSearch className="text-gray-400" />
+            </div>
+            <input
+              type="text"
+              className="block w-full pl-10 pr-10 py-3 border border-gray-700 rounded-lg bg-[#1a0a3a]/50 focus:ring-2 focus:ring-[#7effe7] focus:border-transparent"
+              placeholder="Search by title or law number..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            {searchTerm && (
+              <button
+                onClick={clearSearch}
+                className="absolute inset-y-0 right-0 pr-3 flex items-center"
+              >
+                <FiX className="text-gray-400 hover:text-white" />
+              </button>
+            )}
+          </div>
+
+          {/* Filter and Sort Controls */}
+          <div className="flex gap-3">
+            <div className="relative flex-1">
+              <button
+                onClick={() => setIsFilterOpen(!isFilterOpen)}
+                className="flex items-center justify-center w-full px-4 py-3 bg-[#1a0a3a]/70 border border-gray-700 rounded-lg hover:bg-[#2a1a5a] transition"
+              >
+                <FiFilter className="mr-2" />
+                {selectedCategory === 'All' ? 'Filter' : selectedCategory}
+              </button>
+              
+              {isFilterOpen && (
+                <div className="absolute z-10 mt-1 w-full bg-[#1a0a3a] border border-gray-700 rounded-lg shadow-lg max-h-96 overflow-y-auto">
+                  {categories.map(category => (
+                    <button
+                      key={category}
+                      onClick={() => {
+                        setSelectedCategory(category);
+                        setIsFilterOpen(false);
+                      }}
+                      className={`block w-full text-left px-4 py-2 hover:bg-[#2a1a5a] ${selectedCategory === category ? 'bg-[#7effe7]/20 text-[#7effe7]' : 'text-gray-200'}`}
+                    >
+                      {category}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
-          ))}
 
-          {loading && (
-            <div className="flex items-center space-x-2 text-sm text-purple-300">
-              <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></div>
-              <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse delay-75"></div>
-              <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse delay-150"></div>
-              <span>Thinking...</span>
+            <div className="flex">
+              <button
+                onClick={() => handleSort('title')}
+                className={`px-3 py-2 rounded-l-lg border border-gray-700 ${sortConfig.key === 'title' ? 'bg-[#7effe7]/20 text-[#7effe7]' : 'bg-[#1a0a3a]/70'}`}
+              >
+                A-Z {getSortIcon('title')}
+              </button>
+              <button
+                onClick={() => handleSort('year')}
+                className={`px-3 py-2 rounded-r-lg border border-gray-700 ${sortConfig.key === 'year' ? 'bg-[#7effe7]/20 text-[#7effe7]' : 'bg-[#1a0a3a]/70'}`}
+              >
+                Year {getSortIcon('year')}
+              </button>
             </div>
-          )}
+          </div>
         </div>
-      </div>
 
-      {/* Input area */}
-      <div className="w-full px-4 py-3 border-y border-purple-800 bg-[#250140] sticky bottom-0">
-        <div className="max-w-2xl mx-auto relative">
-          <input
-            type="text"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleAsk()}
-            className="w-full pr-12 pl-4 py-3 bg-purple-900 text-white placeholder-purple-400 rounded-lg border border-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
-            placeholder="Ask anything legal"
-          />
-          <button
-            onClick={handleAsk}
-            disabled={loading}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-purple-300 hover:text-white transition disabled:opacity-50"
-          >
-            <SendHorizontal size={20} />
-          </button>
+        {/* Loading and Error States */}
+        {isLoading && (
+          <div className="flex justify-center py-16">
+            <div className="animate-pulse flex flex-col items-center">
+              <div className="h-12 w-12 bg-[#7effe7]/30 rounded-full mb-4"></div>
+              <p className="text-gray-400">Loading legal documents...</p>
+            </div>
+          </div>
+        )}
+
+        {error && (
+          <div className="bg-red-900/50 border border-red-500 text-red-200 px-4 py-3 rounded-lg mb-6">
+            Error: {error}
+          </div>
+        )}
+
+        {/* Results */}
+        {!isLoading && !error && (
+          <div className="space-y-4">
+            {filteredLaws.length > 0 ? (
+              filteredLaws.map(law => (
+                <LawCard key={law.number} law={law} />
+              ))
+            ) : (
+              <div className="text-center py-16 bg-[#1a0a3a]/50 rounded-lg border border-dashed border-gray-700">
+                <p className="text-gray-400 text-lg">No matching laws found</p>
+                <p className="text-gray-500 mt-2">Try adjusting your search or filters</p>
+              </div>
+            )}
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}
+
+function LawCard({ law }) {
+  return (
+    <div className="group bg-[#1a0a3a]/50 hover:bg-[#1a0a3a]/70 border border-gray-800 hover:border-[#7effe7]/30 rounded-lg p-5 transition-all duration-300 shadow-lg hover:shadow-[#7effe7]/10">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex-1">
+          <h3 className="text-xl font-medium text-[#a67cff] group-hover:text-[#7effe7] transition-colors">
+            <a 
+              href={law.filePath} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              {law.title}
+            </a>
+          </h3>
+          <div className="flex flex-wrap gap-3 mt-2 text-sm">
+            <span className="bg-[#7effe7]/10 text-[#7effe7] px-2 py-1 rounded">
+              {law.category}
+            </span>
+            {law.year && (
+              <span className="bg-[#a67cff]/10 text-[#a67cff] px-2 py-1 rounded">
+                {law.year}
+              </span>
+            )}
+          </div>
         </div>
+        <a
+          href={law.filePath}
+          download
+          className="flex items-center justify-center px-4 py-2 bg-[#7effe7] text-[#0a011f] rounded-lg hover:bg-[#a67cff] transition-colors font-medium"
+        >
+          <FiDownload className="mr-2" />
+          Download
+        </a>
       </div>
     </div>
   );
