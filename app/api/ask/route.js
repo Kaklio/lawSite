@@ -1,14 +1,17 @@
 // app/api/ask/route.js
-
 import { HuggingFaceInferenceEmbeddings } from "@langchain/community/embeddings/hf";
 import { FaissStore } from "@langchain/community/vectorstores/faiss";
 import { PromptTemplate } from "@langchain/core/prompts";
 import Groq from "groq-sdk";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { connectDB } from "@/lib/db";
+import Chat from "@/models/Chat";
+import User from "@/models/User";
 
 let vectorStore;
 let groq;
 
-// Initialize clients (singleton pattern)
 async function initializeClients() {
   if (!vectorStore) {
     const embeddings = new HuggingFaceInferenceEmbeddings({
@@ -16,40 +19,34 @@ async function initializeClients() {
       model: "BAAI/bge-base-en-v1.5",
     });
 
-    // Verify dimensionality
     const testEmbedding = await embeddings.embedQuery("test");
     console.log("Embedding dimension:", testEmbedding.length);
 
-    vectorStore = await FaissStore.load(
-      "./faiss_index",
-      embeddings
-    );
+    vectorStore = await FaissStore.load("./legal_vector_store", embeddings);
     console.log("Vector store loaded");
     console.log("Index dimensions:", vectorStore.index.getDimension());
   }
 
   if (!groq) {
-    groq = new Groq({
-      apiKey: process.env.GROQ_API_KEY
-    });
+    groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
   }
 }
 
-// Create prompt template
 const promptTemplate = new PromptTemplate({
   template: `
-  You are a Pakistani legal expert. Answer strictly based on the given context which contains:
+  You are a Pakistani legal and constitutional expert. Answer strictly based on the given context which contains:
   - Constitution of Pakistan 1973
   - Penal codes
   - Civil codes
   - All laws, bills and Acts passed by the Parliament of Pakistan
+  - British era laws still applicable in Pakistan
 
   For your answers:
   - Cite Article/Section numbers
   - Mention amendments if applicable
   - Specify punishments where relevant
-  - If the question is not related to Pakistani law or not answerable from the context, 
-    respond with: "It is beyond my scope I only answer legal questions"
+  - If the question is not related to Pakistani law, state or constitution that is not answerable from the context, 
+    respond with: "It is beyond my scope I only answer Pakistani legal questions"
 
   Context: {context}
   
@@ -59,63 +56,60 @@ const promptTemplate = new PromptTemplate({
   inputVariables: ["context", "question"]
 });
 
-// Main query function
-async function queryRAG(question) {
+export async function POST(req) {
+  await connectDB();
+  const session = await getServerSession(authOptions);
+
   try {
-    // Initialize clients if not already done
-    await initializeClients();
-    
-    // Retrieve relevant documents
-    const relevantDocs = await vectorStore.similaritySearch(question, 3);
-    
-    // Format context
-    const context = relevantDocs.map(doc => doc.pageContent).join("\n\n---\n\n");
-    const formattedPrompt = await promptTemplate.format({
-      context: context,
-      question: question
-    });
-    
-    // Create and execute Groq completion
-    const completion = await groq.chat.completions.create({
-      model: "deepseek-r1-distill-llama-70b",
-      messages: [
-        {
-          role: "user",
-          content: formattedPrompt
-        }
-      ],
-      temperature: 0.1
-    });
-    const answer = completion.choices[0]?.message?.content;
-    
-    // Prepare sources
-    const sources = relevantDocs.map(doc => ({
-      content: doc.pageContent.slice(0, 200) + "...",
-      metadata: doc.metadata
-    }));
-    
-    return {
-      answer,
-      sources
-    };
-  } catch (error) {
-    console.error("Query error:", error);
-    throw error;
-  }
+    const { question, chatId } = await req.json();
+    let user = null;
+if (session?.user?.email) {
+  user = await User.findOne({ email: session.user.email });
 }
 
-export async function POST(req) {
-  try {
-    const body = await req.json();
-    const { question } = body;
+    await initializeClients();
+    const relevantDocs = await vectorStore.similaritySearch(question, 3);
+    const context = relevantDocs.map(doc => doc.pageContent).join("\n\n---\n\n");
 
-    console.log("Received question:", question);
+    const formattedPrompt = await promptTemplate.format({ context, question });
 
-    const results = await queryRAG(question);
+    const completion = await groq.chat.completions.create({
+      model: "deepseek-r1-distill-llama-70b",
+      messages: [{ role: "user", content: formattedPrompt }],
+      temperature: 0.1,
+    });
 
-    return new Response(JSON.stringify({ 
-      answer: results.answer,
-      sources: results.sources 
+    const answer = completion.choices[0]?.message?.content;
+
+let chatIdToReturn = null;
+
+if (user) {
+  let chat;
+
+  if (chatId) {
+    chat = await Chat.findById(chatId);
+  } else {
+    chat = await Chat.create({
+      userId: user._id,
+      messages: [],
+      title: question.slice(0, 50) || "Untitled",
+    });
+  }
+
+  chat.messages.push({ role: "user", content: question });
+  chat.messages.push({ role: "ai", content: answer });
+  await chat.save();
+
+  chatIdToReturn = chat._id;
+}
+
+    return new Response(JSON.stringify({
+      answer,
+      sources: relevantDocs.map(doc => ({
+        content: doc.pageContent.slice(0, 200) + "...",
+        metadata: doc.metadata,
+      })),
+      chatId: chatIdToReturn,
     }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },

@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from "next/link";
+import { FiChevronDown, FiChevronUp, FiSearch } from 'react-icons/fi';
 
 const fetchMeta = async (filter = {}) => {
   const params = new URLSearchParams(filter);
@@ -26,6 +27,11 @@ export default function LawyerSearchPage() {
   const [totalCount, setTotalCount] = useState(0);
   const [cityChanged, setCityChanged] = useState(false);
   const [practiceChanged, setPracticeChanged] = useState(false);
+  const [sortOption, setSortOption] = useState("sections"); // Default to sections count
+  const [sortConfig, setSortConfig] = useState({
+  key: 'sections', // Default sort
+  direction: 'desc' // Default direction
+});
   const observer = useRef();
 
   useEffect(() => {
@@ -59,11 +65,14 @@ export default function LawyerSearchPage() {
     }
   };
 
-  const handleSearch = async () => {
-    const query = {};
-    if (filters.city !== 'ANY') query.city = filters.city;
-    if (filters.practice !== 'ANY') query.practice = filters.practice;
 
+
+  const handleSearch = async () => {
+      const query = {
+    ...(filters.city !== 'ANY' && { city: filters.city }),
+    ...(filters.practice !== 'ANY' && { practice: filters.practice }),
+    sort: getSortParam() // Use the new sort parameter format
+  };
     const data = await fetchLawyers(query, 0);
     setLawyers(data.lawyers);
     setCounts(data.filterCounts);
@@ -71,6 +80,31 @@ export default function LawyerSearchPage() {
     setTotalCount(data.total); // Track total
     setHasSearched(true);
   };
+
+
+const handleSort = (key) => {
+  setSortConfig(prev => ({
+    key,
+    direction: prev.key === key 
+      ? prev.direction === 'asc' ? 'desc' : 'asc'
+      : 'desc' // Default to desc when switching sort keys
+  }));
+  
+  // Trigger search after a small delay
+  setTimeout(handleSearch, 100);
+};
+
+const getSortIcon = (key) => {
+  if (sortConfig.key !== key) return null;
+  return sortConfig.direction === 'asc' 
+    ? <FiChevronUp className="ml-1 inline" /> 
+    : <FiChevronDown className="ml-1 inline" />;
+};
+
+const getSortParam = () => {
+  if (sortConfig.key === 'sections') return 'sections';
+  return `${sortConfig.key}_${sortConfig.direction}`;
+};
 
   const lastLawyerRef = useRef();
   useEffect(() => {
@@ -80,9 +114,12 @@ export default function LawyerSearchPage() {
       if (loading || skip >= totalCount) return;
       setLoading(true);
 
-      const query = {};
-      if (filters.city !== 'ANY') query.city = filters.city;
-      if (filters.practice !== 'ANY') query.practice = filters.practice;
+        const query = {
+    ...(filters.city !== 'ANY' && { city: filters.city }),
+    ...(filters.practice !== 'ANY' && { practice: filters.practice }),
+    sort: getSortParam() // Use the new sort parameter format
+  };
+
 
       const data = await fetchLawyers(query, skip);
 
@@ -162,12 +199,59 @@ export default function LawyerSearchPage() {
             </select>
           </div>
 
-          <button
-            onClick={handleSearch}
-            className="w-full mt-2 bg-red-950 text-white rounded py-2 hover:bg-red-900 transition"
-          >
-            Search
-          </button>
+  <button
+    onClick={handleSearch}
+    className="w-full mt-2 bg-red-950 text-white rounded py-2 hover:bg-red-900 transition flex items-center justify-center gap-2"
+  >
+    <FiSearch className="w-4 h-4" />
+    Search
+  </button>
+
+
+  {/* {ADDDITION} */}
+<div className="mb-4">
+  <label className="block mb-2 font-medium text-stone-200">Sort By</label>
+  <div className="flex">
+    {/* Profile Completeness Button */}
+    <button
+      onClick={() => handleSort('sections')}
+      className={`px-4 py-2 rounded-l-lg border border-amber-950 transition-colors ${
+        sortConfig.key === 'sections' 
+          ? 'bg-purple-900/70 text-purple-300' 
+          : 'bg-amber-600/70 hover:bg-stone-800/70'
+      }`}
+    >
+      Completeness {getSortIcon('sections')}
+    </button>
+    
+    {/* Name Button */}
+    <button
+      onClick={() => handleSort('alphabetical')}
+      className={`px-4 py-2 border-t border-b border-amber-950 transition-colors ${
+        sortConfig.key === 'alphabetical' 
+          ? 'bg-purple-900/70 text-purple-300' 
+          : 'bg-amber-600/70 hover:bg-stone-800/70'
+      }`}
+    >
+      Name {getSortIcon('alphabetical')}
+    </button>
+    
+    {/* Experience Button */}
+    <button
+      onClick={() => handleSort('experience')}
+      className={`px-4 py-2 rounded-r-lg border border-amber-950 transition-colors ${
+        sortConfig.key === 'experience' 
+          ? 'bg-purple-900/70 text-purple-300' 
+          : 'bg-amber-600/70 hover:bg-stone-800/70'
+      }`}
+    >
+      Experience {getSortIcon('experience')}
+    </button>
+  </div>
+</div>
+{/* {ADDDITION} */}
+
+
         </div>
 
         {/* Lawyer Results */}
@@ -182,7 +266,7 @@ export default function LawyerSearchPage() {
             const showRef = index === lawyers.length - 1;
             return (
               <Link href={`/lawyer/${lawyer.id}`} key={`lawyer-${lawyer.id}`} ref={showRef ? lastLawyerRef : null}>
-                <div className="bg-purple-950 rounded-lg shadow-md p-6 flex flex-col items-center lg:flex-row lg:items-start lg:gap-6 hover:shadow-xl transition">
+                <div className="bg-purple-950 hover:bg-purple-800 rounded-lg shadow-md p-6 flex flex-col items-center lg:flex-row lg:items-start lg:gap-6 hover:shadow-xl transition">
                   <Image
                     src={`/assets/images/Lawyers/${lawyer.id}.jpg`}
                     width={300}
@@ -190,7 +274,7 @@ export default function LawyerSearchPage() {
                     alt={lawyer.name}
                     className="rounded-full object-cover mb-4 lg:mb-0"
                   />
-                  <div className="text-stone-100 text-2xl text-center lg:text-left max-w-2xl py-14">
+                  <div className="text-stone-100 text-2xl text-center lg:text-left max-w-2xl py-14 ">
                     <h3 className="text-4xl font-semibold mb-2">{lawyer.name}</h3>
                     <p className="italic text-sm mb-2">
                       {lawyer.titles?.join(', ')}

@@ -6,7 +6,7 @@ import Login from "./Login";
 import LoginBtn from "./LoginBtn";
 import SignupBtn from "./SignupBtn";
 import { useSelector,useDispatch } from "react-redux";
-import { toggleSignUpBox } from "@/states/signUpSlice";
+import { toggleSignUpBox, closeSignUpBox } from "@/states/signUpSlice";
 import { useSession } from "next-auth/react";
 
 const Hero = () => {
@@ -26,10 +26,18 @@ const { data: session } = useSession(); // Get session data
   
   return (
 
-    <section
-      className="relative h-screen flex flex-col justify-center sm:items-start itmes-center bg-cover bg-center bg-no-repeat "
-      style={{ backgroundImage: "url('/assets/images/homePage/background.jpg')" }}
-    >
+    // <section
+    //   className="relative w-screen h-screen flex flex-col justify-center sm:items-start itmes-center bg-contain bg-center bg-no-repeat "
+    //   style={{ backgroundImage: "url('/assets/images/homePage/backgroundXL.jpg')",
+    //           inlineSize: "100%",
+    //         display: "block"      }}
+    // >
+   <section className="relative h-screen w-full flex flex-col justify-center sm:items-start itmes-center overflow-hidden">
+  <img
+   src="/assets/images/homePage/background.jpg"
+      alt="Background"
+      className="absolute h-[100%] w-screen object-fill"
+    /> 
       {/* <div className="text-5xl text-white z-10">{count}{count2}</div> */}
       {/* <button className="bg-amber-50 text-3xl hover:bg-amber-300 z-10" onClick={ ()=>dispatch(increment())}>+</button> */}
       {/* <button className="bg-amber-50 text-3xl hover:bg-amber-300 z-10" onClick={ ()=>dispatch(decrement())}>-</button> */}

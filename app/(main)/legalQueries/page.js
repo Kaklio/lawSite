@@ -1,174 +1,242 @@
+// app/(main)/legalQueries/page.js
+
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { SendHorizontal, ChevronDown, ChevronUp } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { SendHorizontal, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Trash, Pencil, X } from 'lucide-react';
 
-export default function LawSearch() {
-  const [question, setQuestion] = useState('');
-  const [messages, setMessages] = useState([]); // [{ role: 'user' | 'bot', text: string, thinkText?: string }]
-  const [loading, setLoading] = useState(false);
-  const [expandedThinks, setExpandedThinks] = useState({});
-  const containerRef = useRef(null);
-
-  const toggleThink = (index) => {
-    setExpandedThinks(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
-  };
-
-  const handleAsk = async () => {
-    if (!question.trim()) return;
-
-    const userQuestion = question;
-    setQuestion('');
-    setLoading(true);
-
-    // Add user message
-    setMessages((prev) => [...prev, { role: 'user', text: userQuestion }]);
-
-    try {
-      const response = await fetch('/api/ask', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ question: userQuestion }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        // Extract think text and main answer
-        const fullText = data.answer;
-        const thinkMatch = fullText.match(/<think>([\s\S]*?)<\/think>/);
-        const thinkText = thinkMatch ? thinkMatch[1].trim() : null;
-        const answerText = fullText.replace(/<think>[\s\S]*?<\/think>/, '').trim();
-
-        setMessages((prev) => [...prev, { 
-          role: 'bot', 
-          text: answerText,
-          thinkText: thinkText 
-        }]);
-      } else {
-        setMessages((prev) => [
-          ...prev,
-          { role: 'bot', text: "Sorry, something went wrong. Please try again." },
-        ]);
-      }
-    } catch (error) {
-      console.error("Error calling /api/ask:", error);
-      setMessages((prev) => [
-        ...prev,
-        { role: 'bot', text: "An error occurred while getting the answer." },
-      ]);
-    } finally {
-      setLoading(false);
-    }
-  };
+export default function LegalQueries() {
+  const { data: session, status } = useSession();
+  const [chats, setChats] = useState([]);
+  const [chatId, setChatId] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [showThinking, setShowThinking] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedChatIds, setSelectedChatIds] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollTop = containerRef.current.scrollHeight;
-    }
-  }, [messages, loading, expandedThinks]);
+    if (status === 'authenticated') fetchChats();
+  }, [status]);
 
-  const hasContent = messages.length > 0 || loading;
+  const fetchChats = async () => {
+    const res = await fetch('/api/chats');
+try {
+  const data = await res.json();
+  setChats(Array.isArray(data) ? data : []);
+} catch (err) {
+  console.error("Failed to load chats", err);
+  setChats([]);
+}
+  };
+
+  const handleNewChat = () => {
+    setChatId(null);
+    setMessages([]);
+    setInput('');
+  };
+
+  const handleChatSelect = (chat) => {
+    setChatId(chat._id);
+    setMessages(chat.messages);
+  };
+
+  const formatMessage = (content) => {
+    const thinkMatch = content.match(/<think>([\s\S]*?)<\/think>/);
+    const visible = content.replace(/<think>[\s\S]*?<\/think>/, '').trim();
+    // const headingsFormatted = visible.replace(/\*\*(.*?)\*\*/g, '<h3 class="font-semibold text-xl text-purple-300 mt-4 mb-1">$1</h3>');
+const headingsFormatted = visible.replace(
+  /(?:(\d+\.)\s*)?\*\*(.*?)(:?)\*\*/g,
+  (match, number, heading, colon) => 
+    `<h3 class="font-semibold text-xl text-purple-300 mt-4 mb-1">${number ? number + ' ' : ''}${heading}${colon}</h3>`
+);
+
+    return {
+      thinking: thinkMatch ? thinkMatch[1].trim() : null,
+      visible: headingsFormatted,
+    };
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+
+    const userMessage = { role: 'user', content: input };
+    setMessages((prev) => [...prev, userMessage]);
+
+    const res = await fetch('/api/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: input, chatId }),
+    });
+
+    const data = await res.json();
+    if (data.error) return;
+
+    const aiMessage = { role: 'ai', content: data.answer };
+    setMessages((prev) => [...prev, aiMessage]);
+    if (!chatId) fetchChats();
+    setInput('');
+    setShowThinking(false);
+  };
 
   return (
-    <div className="flex flex-col bg-purple-950 text-white min-h-screen">
-      {/* Chat area */}
-      <div
-        ref={containerRef}
-        className="flex-1 overflow-y-auto px-4 py-6 transition-all duration-300 justify-center flex"
-      >
-        <div className="max-w-2xl w-full space-y-4 flex flex-col">
-          {!hasContent && (
-            <h2 className="text-center text-2xl font-semibold opacity-50">
-              Ask your legal question
-            </h2>
-          )}
+    <div className="flex h-screen bg-gray-100 dark:bg-gray-950">
+      {/* Stylish Sidebar */}
+      <aside className={`transition-all duration-300 ${isSidebarOpen ? 'w-72' : 'w-16'} bg-gray-900 text-white flex flex-col p-4 overflow-y-auto`}>
+        <div className="flex items-center justify-between mb-4">
+          <button
+            className="text-white hover:text-purple-400"
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          >
+            {isSidebarOpen ? <ChevronLeft /> : <ChevronRight />}
+          </button>
+          {isSidebarOpen && <h2 className="text-2xl pr-44 font-semibold">Chats</h2>}
+        </div>
+        {isSidebarOpen && (
+          <>
+<button
+  className="flex items-center gap-2 bg-gray-800 hover:bg-purple-950 my-1 text-white pr-32 py-1 rounded text-xl"
+  onClick={handleNewChat}
+>
+  <Pencil/> <span>New Chat</span>
+</button>
+<button
+  onClick={() => setShowDeleteModal(true)}
+  className="flex items-center gap-2 bg-gray-800 hover:bg-purple-950 my-1 text-white pr-26 py-1 rounded text-xl"
+>
+  <Trash /> <span>Delete Chats</span>
+</button>
+            <div className="space-y-2 text-sm">
+              {chats.map((chat) => (
+                <button
+                  key={chat._id}
+                  className={`w-full text-left p-2 rounded hover:bg-gray-800 ${chat._id === chatId ? 'bg-purple-700' : ''}`}
+                  onClick={() => handleChatSelect(chat)}
+                >
+                  {chat.title || 'Untitled'}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
 
-          {messages.map((msg, idx) => (
-            <div key={idx} className="w-full">
-              {msg.role === 'user' ? (
-                <div className="bg-purple-800 p-3 rounded-lg shadow-md whitespace-pre-line leading-relaxed self-end text-right max-w-[90%] ml-auto">
-                  {msg.text}
-                </div>
-              ) : (
-                <div className="space-y-2">
-{msg.thinkText && (
-  <div className="bg-[#2a0252] rounded-lg overflow-hidden">
-    <button
-      onClick={() => toggleThink(idx)}
-      className="w-full flex items-center justify-between p-3 text-sm text-purple-200 hover:text-white transition-colors"
-    >
-      <span>{expandedThinks[idx] ? 'Hide thought process' : 'Show thought process'}</span>
-      {expandedThinks[idx] ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-    </button>
-    <div
-      className={`transition-all duration-700 ease-in-out overflow-hidden ${
-        expandedThinks[idx] 
-          ? 'max-h-[1000px] opacity-100' 
-          : 'max-h-0 opacity-0'
-      }`}
-    >
-      <div className="p-3 pt-0 text-sm text-purple-100 whitespace-pre-line border-t border-purple-900">
-        {msg.thinkText}
+{showDeleteModal && (
+  <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+    <div className="bg-white dark:bg-gray-900 p-6 rounded shadow-lg max-w-md w-full">
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Delete Chats</h3>
+        <button onClick={() => setShowDeleteModal(false)}>
+          <X className="text-gray-500 hover:text-red-500" />
+        </button>
       </div>
+
+      <div className="max-h-64 overflow-y-auto space-y-2">
+        {chats.map(chat => (
+          <label key={chat._id} className="flex items-center gap-2 text-sm text-gray-800 dark:text-white">
+            <input
+              type="checkbox"
+              checked={selectedChatIds.includes(chat._id)}
+              onChange={(e) => {
+                if (e.target.checked) {
+                  setSelectedChatIds([...selectedChatIds, chat._id]);
+                } else {
+                  setSelectedChatIds(selectedChatIds.filter(id => id !== chat._id));
+                }
+              }}
+            />
+            {chat.title || "Untitled"}
+          </label>
+        ))}
+      </div>
+
+      <button
+        onClick={async () => {
+          await fetch('/api/chats/delete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chatIds: selectedChatIds })
+          });
+          setShowDeleteModal(false);
+          setSelectedChatIds([]);
+          fetchChats(); // refresh UI
+          if (selectedChatIds.includes(chatId)) {
+            setChatId(null);
+            setMessages([]);
+          }
+        }}
+        disabled={selectedChatIds.length === 0}
+        className="mt-4 w-full bg-red-700 hover:bg-red-800 text-white py-2 rounded"
+      >
+        Delete Selected
+      </button>
     </div>
   </div>
 )}
-                  <div className={`bg-[#340259] p-3 rounded-lg shadow-md whitespace-pre-line leading-relaxed`}>
-                    {msg.text.startsWith('Article') || msg.text.startsWith('**Answer:**') ? (
-                      <div className="space-y-2">
-                        <h3 className="text-xl font-bold text-purple-100 bg-purple-900/50 px-2 py-1 rounded">
-                          {msg.text.startsWith('Article') ? 'Legal Answer' : 'Answer'}
-                        </h3>
-                        <div className="text-white">
-                          {msg.text.replace('**Answer:**', '').trim()}
+
+      </aside>
+
+      {/* Chat Interface */}
+      <main className="flex-1 flex flex-col">
+        <div className="flex-1 overflow-y-auto p-6 space-y-4">
+          {messages.map((msg, index) => {
+            if (msg.role === 'ai') {
+              const { visible, thinking } = formatMessage(msg.content);
+              return (
+                <div key={index} className="bg-gray-200 dark:bg-gray-700 p-4 rounded text-sm max-w-2xl self-start mr-auto">
+                  <div dangerouslySetInnerHTML={{ __html: visible }} />
+                  {thinking && (
+                    <div className="mt-4">
+                      <button
+                        onClick={() => setShowThinking((prev) => !prev)}
+                        className="text-xs text-purple-600 hover:underline flex items-center gap-1"
+                      >
+                        {showThinking ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                        {showThinking ? 'Hide reasoning' : 'Show reasoning'}
+                      </button>
+                      {showThinking && (
+                        <div className="mt-2 text-xs bg-gray-100 dark:bg-gray-800 p-2 rounded whitespace-pre-wrap">
+                          {thinking}
                         </div>
-                      </div>
-                    ) : (
-                      msg.text
-                    )}
-                  </div>
+                      )}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          ))}
-
-          {loading && (
-            <div className="flex items-center space-x-2 text-sm text-purple-300">
-              <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></div>
-              <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse delay-75"></div>
-              <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse delay-150"></div>
-              <span>Thinking...</span>
-            </div>
-          )}
+              );
+            }
+            return (
+              <div
+                key={index}
+                className={`p-4 rounded max-w-xl text-sm ${msg.role === 'user' ? 'bg-purple-100 dark:bg-purple-800 self-end ml-auto' : 'bg-gray-200 dark:bg-gray-700 self-start mr-auto'}`}
+              >
+                {msg.content}
+              </div>
+            );
+          })}
         </div>
-      </div>
 
-      {/* Input area */}
-      <div className="w-full px-4 py-3 border-y border-purple-800 bg-[#250140] sticky bottom-0">
-        <div className="max-w-2xl mx-auto relative">
-          <input
-            type="text"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleAsk()}
-            className="w-full pr-12 pl-4 py-3 bg-purple-900 text-white placeholder-purple-400 rounded-lg border border-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
-            placeholder="Ask anything legal"
-          />
-          <button
-            onClick={handleAsk}
-            disabled={loading}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-purple-300 hover:text-white transition disabled:opacity-50"
-          >
-            <SendHorizontal size={20} />
-          </button>
-        </div>
-      </div>
+        <form onSubmit={handleSubmit} className="p-4 border-t border-gray-200 dark:border-gray-800">
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              className="flex-1 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Ask a legal question..."
+            />
+            <button
+              type="submit"
+              className="bg-purple-700 hover:bg-purple-800 text-white p-2 rounded-lg"
+            >
+              <SendHorizontal className="w-5 h-5" />
+            </button>
+          </div>
+        </form>
+      </main>
     </div>
   );
 }

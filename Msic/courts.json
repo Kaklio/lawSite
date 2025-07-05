@@ -1,0 +1,641 @@
+[
+  {
+    "id": "1",
+    "Court Name": "District & Sessions Court Lahore",
+    "Address & Location": "Judicial Complex, Lower Mall, Lahore‑54000",
+    "Contact": {
+      "Email": "dsjlahore@punjab.gov.pk",
+      "Number": "+92‑42‑99213200, +92‑42‑99210131"
+    },
+    "City": "Lahore",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "2",
+    "Court Name": "Lahore High Court",
+    "Address & Location": "Shahra‑e‑Quaid‑e‑Azam, Lahore‑54000",
+    "Contact": {
+      "Number": "+92 42 99212951(ext. 236–237)"
+    },
+    "City": "Lahore",
+    "Type": "High Court"
+  },
+  {
+    "id": "3",
+    "Court Name": "Civil & Special Courts Complex",
+    "Address & Location": "Judicial Complex, Lower Mall Road, Lahore‑54000",
+    "Contact": {
+      "Number": "+92‑42‑99213200"
+    },
+    "City": "Lahore",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "4",
+    "Court Name": "District & Sessions Court Rawalpindi",
+    "Address & Location": "Judicial Complex, near Adiala Road, Rawalpindi",
+    "Contact": {
+      "Email": "dsjrawalpindi@punjab.gov.pk",
+      "Number": "+92‑51‑9286061, +92‑51‑9286062"
+    },
+    "City": "Rawalpindi",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "5",
+    "Court Name": "Senior Civil Judge Court",
+    "Address & Location": "Judicial Complex, District Courts, Rawalpindi",
+    "Contact": {
+      "Number": "+92 51 9286063, +92 51 9286065"
+    },
+    "City": "Rawalpindi",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "6",
+    "Court Name": "Specialized Courts",
+    "Address & Location": "Judicial Complex, near Adiala Road, Rawalpindi",
+    "Contact": {
+      "Email": "dsjrawalpindi@punjab.gov.pk",
+      "Number": "+92 51 9286061, +92‑51‑9286062"
+    },
+    "City": "Rawalpindi",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "7",
+    "Court Name": "District & Sessions Court Chakwal",
+    "Address & Location": "District Court Complex, Chakwal",
+    "Contact": {
+      "Email": "dsjchakwal@punjab.gov.pk",
+      "Number": "+92‑543‑660144, +92‑543‑660030"
+    },
+    "City": "Chakwal",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "8",
+    "Court Name": "District & Sessions Court Attock",
+    "Address & Location": "Judicial Complex, Attock",
+    "Contact": {
+      "Email": "dsjattock@punjab.gov.pk",
+      "Number": "+92‑579‑316055, +92‑579‑316057"
+    },
+    "City": "Attock",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "9",
+    "Court Name": "District & Sessions Court Bhakkar",
+    "Address & Location": "District Court Office, Bhakkar",
+    "Contact": {
+      "Email": "dsjbhakkar@punjab.gov.pk",
+      "Number": "+92‑453‑9200264, +92‑453‑9200266"
+    },
+    "City": "Bhakkar",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "10",
+    "Court Name": "District & Sessions Court Gujranwala",
+    "Address & Location": "Judicial Complex, Gujranwala",
+    "Contact": {
+      "Email": "dsjgujranwala@punjab.gov.pk",
+      "Number": "+92‑55‑9200082, +92‑55‑9200081"
+    },
+    "City": "Gujranwala",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "11",
+    "Court Name": "District & Sessions Court Gujrat",
+    "Address & Location": "Judicial Complex, Gujrat",
+    "Contact": {
+      "Email": "dsjgujrat@punjab.gov.pk",
+      "Number": "+92‑53‑9260082, +92‑53‑9260081"
+    },
+    "City": "Gujrat",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "12",
+    "Court Name": "District & Sessions Court Hafizabad",
+    "Address & Location": "Court Complex, Hafizabad",
+    "Contact": {
+      "Email": "dsjhafizabad@punjab.gov.pk",
+      "Number": "+92‑547‑540012, +92‑547‑540013"
+    },
+    "City": "Hafizabad",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "13",
+    "Court Name": "District & Sessions Court Faisalabad",
+    "Address & Location": "Judicial Complex, Circular Road, Faisalabad",
+    "Contact": {
+      "Email": "dsjfaisalabad@punjab.gov.pk",
+      "Number": "+92‑41‑9200292, +92‑41‑9200299"
+    },
+    "City": "Faisalabad",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "14",
+    "Court Name": "District & Sessions Court Chiniot",
+    "Address & Location": "Judicial Complex, Chiniot",
+    "Contact": {
+      "Number": "+92‑47‑9210005, +92‑47‑9210004"
+    },
+    "City": "Chiniot",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "15",
+    "Court Name": "District & Sessions Court Jhang",
+    "Address & Location": "Judicial Complex, Jhang",
+    "Contact": {
+      "Email": "dsjjhang@punjab.gov.pk",
+      "Number": "+92‑47‑9200092, +92‑47‑9200192"
+    },
+    "City": "Jhang",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "16",
+    "Court Name": "District & Sessions Court Toba Tek Singh",
+    "Address & Location": "Judicial Complex, Toba Tek Singh",
+    "Contact": {
+      "Email": "dsjttsingh@punjab.gov.pk",
+      "Number": "+92‑46‑9201151, +92‑46‑9201153"
+    },
+    "City": "Toba Tek Singh",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "17",
+    "Court Name": "District & Sessions Court Kasur",
+    "Address & Location": "Judicial Complex, Kasur",
+    "Contact": {
+      "Email": "dsjkasur@punjab.gov.pk",
+      "Number": "+92‑499‑250092, +92‑499‑250188"
+    },
+    "City": "Kasur",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "18",
+    "Court Name": "District & Sessions Court Multan",
+    "Address & Location": "Judicial Complex, Gulgasht Colony, Multan",
+    "Contact": {
+      "Email": "dsjmultan@punjab.gov.pk",
+      "Number": "+92‑61‑9201165, +92‑61‑9201168"
+    },
+    "City": "Multan",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "19",
+    "Court Name": "District & Sessions Court Khanewal",
+    "Address & Location": "Judicial Complex, Khanewal",
+    "Contact": {
+      "Email": "dsjkhanewal@punjab.gov.pk",
+      "Number": "+92‑65‑9200188, +92‑65‑9200189"
+    },
+    "City": "Khanewal",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "20",
+    "Court Name": "District & Sessions Court Lodhran",
+    "Address & Location": "Judicial Complex, Chak No. 100/M, Lodhran",
+    "Contact": {
+      "Number": "+92‑608‑921005, +92‑608‑921006"
+    },
+    "City": "Lodhran",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "21",
+    "Court Name": "District & Sessions Court Vehari",
+    "Address & Location": "Judicial Complex, Vehari",
+    "Contact": {
+      "Email": "dsjvehari@punjab.gov.pk",
+      "Number": "+92‑679‑201141, +92‑679‑201142"
+    },
+    "City": "Vehari",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "22",
+    "Court Name": "Sessions Court Complex Dera Ghazi Khan",
+    "Address & Location": "Judicial Complex, D.G. Khan",
+    "Contact": {
+      "Email": "dsjdgkhan@punjab.gov.pk",
+      "Number": "+92‑64‑9260312, +92‑64‑9260314"
+    },
+    "City": "Dera Ghazi Khan",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "23",
+    "Court Name": "District & Sessions Court Layyah",
+    "Address & Location": "Judicial Complex, Layyah",
+    "Contact": {
+      "Number": "+92‑606‑920030, +92‑606‑920032"
+    },
+    "City": "Layyah",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "24",
+    "Court Name": "District & Sessions Court Muzaffargarh",
+    "Address & Location": "Judicial Complex, Muzaffargarh",
+    "Contact": {
+      "Email": "dsjmuzaffargarh@punjab.gov.pk",
+      "Number": "+92‑669‑200120"
+    },
+    "City": "Muzaffargarh",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "25",
+    "Court Name": "District & Sessions Court Rajanpur",
+    "Address & Location": "Judicial Complex, Rajanpur",
+    "Contact": {
+      "Email": "dsjrajanpur@punjab.gov.pk",
+      "Number": "+92‑604‑920092, +92‑604‑920094"
+    },
+    "City": "Rajanpur",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "26",
+    "Court Name": "District & Sessions Court Bahawalpur",
+    "Address & Location": "Judicial Complex, Bahawalpur",
+    "Contact": {
+      "Email": "dsjbahawalpur@punjab.gov.pk",
+      "Number": "+92‑62‑9250092"
+    },
+    "City": "Bahawalpur",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "27",
+    "Court Name": "District & Sessions Court Bahawalnagar",
+    "Address & Location": "Judicial Complex, Bahawalnagar",
+    "Contact": {
+      "Email": "dsjbahawalnagar@punjab.gov.pk",
+      "Number": "+92‑63‑9240165, +92‑63‑9240166"
+    },
+    "City": "Bahawalnagar",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "28",
+    "Court Name": "District & Sessions Court Rahim Yar Khan",
+    "Address & Location": "Judicial Complex, Rahim Yar Khan",
+    "Contact": {
+      "Email": "dsjrykhan@punjab.gov.pk",
+      "Number": "+92‑68‑9230261, +92‑68‑9230314"
+    },
+    "City": "Rahim Yar Khan",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "29",
+    "Court Name": "District & Sessions Court, Kashmore @ Kandhkot",
+    "Address & Location": "Rasaldar Road, Kandhkot Judicial Complex",
+    "Contact": {
+      "Email": "djkashmorekandhkot@sindhhighcourt.gov.pkWebsite",
+      "Number": "07225‑70950, 07225‑70949"
+    },
+    "City": "Kandhkot",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "30",
+    "Court Name": "District & Sessions Court, Shikarpur",
+    "Address & Location": "Sukkur Road, Shikarpur Judicial Complex",
+    "Contact": {
+      "Email": "djshikarpur@sindhhighcourt.gov.pkWebsite",
+      "Number": "+92‑726‑920121, +92‑726‑920123"
+    },
+    "City": "Shikarpur",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "31",
+    "Court Name": "District & Sessions Court, Sanghar",
+    "Address & Location": "Sinjhoro Road, Sanghar Judicial Complex",
+    "Contact": {
+      "Email": "djsanghar@sindhhighcourt.gov.pk",
+      "Number": "(0235) 920006, (0235) 920007"
+    },
+    "City": "Sanghar",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "32",
+    "Court Name": "District & Sessions Court, Matiari",
+    "Address & Location": "Judicial Complex, Matiari",
+    "Contact": {
+      "Email": "djmatyari@sindhhighcourt.gov.pk",
+      "Number": "92‑22‑9240800"
+    },
+    "City": "Matiari",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "33",
+    "Court Name": "District & Sessions Court, Naushahro Feroze",
+    "Address & Location": "Judicial Complex, Naushahro Feroze",
+    "Contact": {
+      "Email": "djnaushahroferoze@sindhhighcourt.gov.pk",
+      "Number": "(0242) 448478"
+    },
+    "City": "Naushahro Feroze",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "34",
+    "Court Name": "District & Sessions Court, Mirpurkhas",
+    "Address & Location": "Judicial Complex, Mirpurkhas",
+    "Contact": {
+      "Email": "djmirpurkhas@sindhhighcourt.gov.pk",
+      "Number": "(0233) 9290005, (0233) 9290006"
+    },
+    "City": "Mirpurkhas",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "35",
+    "Court Name": "District & Sessions Court, Quetta",
+    "Address & Location": "Zarghun Road, Quetta",
+    "Contact": {
+      "Number": "081‑9201613, 081‑9202323"
+    },
+    "City": "Quetta",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "36",
+    "Court Name": "District & Sessions Court, Sibi",
+    "Address & Location": "(Within Sibi Judicial Complex)",
+    "Contact": "(via BHC directory)",
+    "City": "Sibi",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "37",
+    "Court Name": "District & Sessions Court, Turbat",
+    "Address & Location": "(Within Turbat Judicial Complex)",
+    "Contact": "(via BHC directory)",
+    "City": "Turbat",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "38",
+    "Court Name": "District & Sessions Court, Loralai",
+    "Address & Location": "(Within Loralai Judicial Complex)",
+    "Contact": "(via BHC directory)",
+    "City": "Loralai",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "39",
+    "Court Name": "District & Sessions Court, Khuzdar",
+    "Address & Location": "(Within Khuzdar Judicial Complex)",
+    "Contact": "(via BHC directory)",
+    "City": "Khuzdar",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "40",
+    "Court Name": "District & Sessions Court, Peshawar",
+    "Address & Location": "Judicial Complex, Peshawar",
+    "Contact": {
+      "Email": "scpeshawar@yahoo.com",
+      "Number": "+92‑91‑9212214, +92‑91‑9212419"
+    },
+    "City": "Peshawar",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "41",
+    "Court Name": "District & Sessions Court, Haripur",
+    "Address & Location": "Haripur",
+    "Contact": {
+      "Email": "dsjharipur@gmail.com",
+      "Number": "+92‑995‑920500, +92‑995‑920501"
+    },
+    "City": "Haripur",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "42",
+    "Court Name": "District & Sessions Court, Malakand",
+    "Address & Location": "Batkhela Complex",
+    "Contact": {
+      "Email": "dsjmalakand@gmail.com",
+      "Number": "+92‑0932‑412474"
+    },
+    "City": "Malakand",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "43",
+    "Court Name": "District & Sessions Court, Orakzai",
+    "Address & Location": "Babar Mela, Hangu",
+    "Contact": {
+      "Email": "scjorakzai@gmail.com",
+      "Number": "+92‑925‑690320, +92‑925‑690324"
+    },
+    "City": "Orakzai",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "44",
+    "Court Name": "District & Sessions Court, Upper Dir",
+    "Address & Location": "Upper Dir Complex",
+    "Contact": "Available via PHC portal",
+    "City": "Upper Dir",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "45",
+    "Court Name": "District & Sessions Court, Shangla",
+    "Address & Location": "Shangla Judicial Complex",
+    "Contact": {
+      "Email": "dsjshangla1@gmail.com",
+      "Number": "+92‑996‑850001, +92‑996‑851001"
+    },
+    "City": "Shangla",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "46",
+    "Court Name": "District & Sessions Court Mandi Bahauddin",
+    "Address & Location": "District & Sessions Court, Mandi Bahauddin",
+    "Contact": {
+      "Email": "dsjmbdin@punjab.gov.pk",
+      "Number": "+92 546 501833, +92 546 650425"
+    },
+    "City": "Mandi Bahauddin",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "47",
+    "Court Name": "District & Sessions Court Narowal",
+    "Address & Location": "District & Sessions Court, Narowal",
+    "Contact": {
+      "Number": "+92 542 920100, +92 542 920101"
+    },
+    "City": "Narowal",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "48",
+    "Court Name": "District & Sessions Court Nankana Sahib",
+    "Address & Location": "District & Sessions Court, Nankana Sahib",
+    "Contact": {
+      "Email": "dsjnankana@punjab.gov.pk",
+      "Number": "+92 56 9201001"
+    },
+    "City": "Nankana Sahib",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "49",
+    "Court Name": "District & Sessions Court Okara",
+    "Address & Location": "District & Sessions Court, Okara",
+    "Contact": {
+      "Email": "dsjokara@punjab.gov.pk",
+      "Number": "+92 449 200412, +92 449 200413"
+    },
+    "City": "Okara",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "50",
+    "Court Name": "District & Sessions Court Pakpattan",
+    "Address & Location": "District & Sessions Court, Pakpattan",
+    "Contact": {
+      "Email": "dsjpakpattan@punjab.gov.pk",
+      "Number": "+92 457 371710, +92 457 374200"
+    },
+    "City": "Pakpattan",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "51",
+    "Court Name": "District & Sessions Court Sahiwal",
+    "Address & Location": "District & Sessions Court, Sahiwal",
+    "Contact": {
+      "Email": "dsjsahiwal@punjab.gov.pk",
+      "Number": "+92 40 9200123, +92 40 9200124"
+    },
+    "City": "Sahiwal",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "52",
+    "Court Name": "District & Sessions Court Sheikhupura",
+    "Address & Location": "District & Sessions Court, Sheikhupura",
+    "Contact": {
+      "Email": "dsjsheikhupura@punjab.gov.pk",
+      "Number": "+92 56 9200192, +92 56 9200193"
+    },
+    "City": "Sheikhupura",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "53",
+    "Court Name": "District & Sessions Court Sialkot",
+    "Address & Location": "District & Sessions Court, Sialkot",
+    "Contact": {
+      "Email": "dsjsialkot@punjab.gov.pk",
+      "Number": "+92 52 9250444, +92 52 9250443"
+    },
+    "City": "Sialkot",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "54",
+    "Court Name": "District & Sessions Court Khushab",
+    "Address & Location": "District & Sessions Court, Khushab",
+    "Contact": "(Contact via Khushab site)",
+    "City": "Khushab",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "55",
+    "Court Name": "District & Sessions Court Mianwali",
+    "Address & Location": "District & Sessions Court, Mianwali",
+    "Contact": {
+      "Number": "+92 459 920273, +92 459 920209"
+    },
+    "City": "Mianwali",
+    "Type": "Lower Court"
+  },
+  {
+    "id": "56",
+    "Court Name": "Supreme Court of Pakistan",
+    "Address & Location": "Supreme Court of Pakistan",
+    "Contact": {
+      "Email": "mail@supremecourt.gov.pk",
+      "Number": "+92 51 9220581, +92 51 9213452"
+    },
+    "City": "Islamabad",
+    "Type": "High Court"
+  },
+  {
+    "id": "57",
+    "Court Name": "Lahore High Court (Punjab)",
+    "Address & Location": "Lahore High Court (Punjab)",
+    "Contact": "Shahra‑e‑Quaid‑e‑Azam, Lahore‑54000",
+    "City": "Lahore",
+    "Type": "High Court"
+  },
+  {
+    "id": "58",
+    "Court Name": "Sindh High Court",
+    "Address & Location": "Sindh High Court",
+    "Contact": {
+      "Number": "(021) 99203151–59, (021) 99203221 / 99203224"
+    },
+    "City": "Karachi",
+    "Type": "High Court"
+  },
+  {
+    "id": "59",
+    "Court Name": "Peshawar High Court",
+    "Address & Location": "Peshawar High Court",
+    "Contact": {
+      "Email": "info@peshawarhighcourt.gov.pk",
+      "Number": "+92 91 9210149–58, +92 91 9210170"
+    },
+    "City": "Peshawar",
+    "Type": "High Court"
+  },
+  {
+    "id": "60",
+    "Court Name": "Balochistan High Court",
+    "Address & Location": "Balochistan High Court",
+    "Contact": {
+      "Email": "info@bhc.gov.pk",
+      "Number": "081 9202077, 081 9202784"
+    },
+    "City": "Quetta",
+    "Type": "High Court"
+  },
+  {
+    "id": "61",
+    "Court Name": "Islamabad High Court",
+    "Address & Location": "Islamabad High Court",
+    "Contact": {
+      "Number": "051 9198116 (Sessions), 051 9228114"
+    },
+    "City": "Islamabad",
+    "Type": "High Court"
+  }
+]

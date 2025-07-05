@@ -23,10 +23,47 @@ export async function GET(req) {
   if (courts.length) matchStage.courts = { $in: courts };
   if (languages.length) matchStage.languages = { $in: languages };
 
-  const sortStage = {};
-  if (sort === "alphabetical") sortStage.name = 1;
-  else if (sort === "experience") sortStage.experience = -1;
-  else sortStage["sectionsCount"] = -1; // default: prioritize profiles with more sections
+  // const sortStage = {};
+  // if (sort === "alphabetical") sortStage.name = 1;
+  // else if (sort === "experience") sortStage.experience = -1;
+  // else sortStage["sectionsCount"] = -1; // default: prioritize profiles with more sections
+
+////
+// const sortStage = {};
+// const sortParam = sort || "sections"; // Default to sections if not specified
+
+// if (sortParam.startsWith("alphabetical")) {
+//   const direction = sortParam.includes("_desc") ? -1 : 1;
+//   sortStage.name = direction;
+// } 
+// else if (sortParam.startsWith("experience")) {
+//   const direction = sortParam.includes("_desc") ? -1 : 1;
+//   sortStage.experience = direction;
+// } 
+// else {
+//   sortStage["sectionsCount"] = -1; // Default sort
+// }
+////
+
+//////
+const sortStage = {};
+const sortParam = sort || "sections";
+
+if (sortParam.startsWith("alphabetical")) {
+  const direction = sortParam.endsWith("_asc") ? 1 : -1;
+  sortStage.name = direction;
+} 
+else if (sortParam.startsWith("experience")) {
+  const direction = sortParam.endsWith("_asc") ? 1 : -1;
+  sortStage.experience = direction;
+} 
+else {
+  sortStage["sectionsCount"] = -1; // Default sort
+}
+//////
+
+
+
 
   const pipeline = [
     {
