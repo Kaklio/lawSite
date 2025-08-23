@@ -8,7 +8,7 @@ export async function POST(request) {
     const { email, code } = await request.json();
 
     if (code) {
-      // ✅ Step 2: Handle verification request
+      // Handle verification request
       const storedCode = codeStorage.get(email);
       if (storedCode === code) {
         codeStorage.delete(email); // Remove after verification
@@ -17,7 +17,7 @@ export async function POST(request) {
         return NextResponse.json({ error: "Invalid or expired code" }, { status: 400 });
       }
     } else if (email) {
-      // ✅ Step 1: Generate and send code
+      // Generate and send code
       const generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
       codeStorage.set(email, generatedCode);
      
@@ -37,7 +37,6 @@ export async function POST(request) {
       subject: "Verification Code",
       text: `Your verification code is: ${generatedCode}`,
     });
-
 
       return NextResponse.json({ success: true, message: "Code sent" });
     }

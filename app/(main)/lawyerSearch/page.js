@@ -159,7 +159,7 @@ const getSortParam = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Filters */}
-        <div className="lg:col-span-1 bg-yellow-950 rounded shadow p-4">
+        <div className="lg:col-span-1 bg-yellow-950 rounded shadow p-4 ">
           <h2 className="text-xl font-bold text-stone-200 mb-4">Filters</h2>
 
           <div className="mb-4">
@@ -211,11 +211,11 @@ const getSortParam = () => {
   {/* {ADDDITION} */}
 <div className="mb-4">
   <label className="block mb-2 font-medium text-stone-200">Sort By</label>
-  <div className="flex">
+  <div className="flex flex-col">
     {/* Profile Completeness Button */}
     <button
       onClick={() => handleSort('sections')}
-      className={`px-4 py-2 rounded-l-lg border border-amber-950 transition-colors ${
+      className={`px-4 py-2 rounded-t-lg border border-amber-950 transition-colors ${
         sortConfig.key === 'sections' 
           ? 'bg-purple-900/70 text-purple-300' 
           : 'bg-amber-600/70 hover:bg-stone-800/70'
@@ -239,7 +239,7 @@ const getSortParam = () => {
     {/* Experience Button */}
     <button
       onClick={() => handleSort('experience')}
-      className={`px-4 py-2 rounded-r-lg border border-amber-950 transition-colors ${
+      className={`px-4 py-2 rounded-b-lg border border-amber-950 transition-colors ${
         sortConfig.key === 'experience' 
           ? 'bg-purple-900/70 text-purple-300' 
           : 'bg-amber-600/70 hover:bg-stone-800/70'

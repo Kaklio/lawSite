@@ -5,7 +5,7 @@
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { SendHorizontal, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Trash, Pencil, X } from 'lucide-react';
+import { SendHorizontal, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Trash, Pencil, X, PhoneCall } from 'lucide-react';
 
 export default function LegalQueries() {
   const { data: session, status } = useSession();
@@ -17,6 +17,7 @@ export default function LegalQueries() {
   const [showThinking, setShowThinking] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedChatIds, setSelectedChatIds] = useState([]);
+  const [humanContact, setHumanContact] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -67,6 +68,8 @@ const headingsFormatted = visible.replace(
 
     const userMessage = { role: 'user', content: input };
     setMessages((prev) => [...prev, userMessage]);
+    setInput('');
+
 
     const res = await fetch('/api/ask', {
       method: 'POST',
@@ -80,7 +83,6 @@ const headingsFormatted = visible.replace(
     const aiMessage = { role: 'ai', content: data.answer };
     setMessages((prev) => [...prev, aiMessage]);
     if (!chatId) fetchChats();
-    setInput('');
     setShowThinking(false);
   };
 
@@ -177,9 +179,42 @@ const headingsFormatted = visible.replace(
     </div>
   </div>
 )}
+<div className={`transition-all duration-300 bg-green-700 text-white ${humanContact ? "h-60" : "h-10"} mt-auto rounded-md p-2 pb-5`}>
+  <div className="flex items-center justify-between">
+    <button
+      onClick={() => setHumanContact(!humanContact)}
+      className="flex items-center justify-center h-8 w-8 hover:bg-green-600 rounded"
+    >
+      {humanContact ? <ChevronDown className="w-10 h-10" /> : <ChevronUp className="w-10 h-10" />}
+    </button>
+    <span className="text-lg font-extrabold ">Talk to a human <PhoneCall className='inline-flex px-auto' /></span>
+    {/* <PhoneCall /> */}
+    <div className="w-8"></div> {/* Spacer for balance */}
+  </div>
+  
+  {humanContact && (
+    <div className="mt-2 space-y-2 text-sm">
+      <div className="bg-gray-900 p-2 rounded">
+        <p className="font-medium">Naz Assist Hotline:</p>
+        <p className="text-white/90 my-2">0800-70806</p>
+        <p className="text-[12px]">(9am-5pm)</p>
+      </div>
+      <div className="bg-gray-900 p-2 rounded">
+        <p className="font-medium">Website:</p>
+        <a 
+          href="https://www.las.org.pk/nazassist/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-300 hover:text-blue-200 hover:underline"
+        >
+          https://www.las.org.pk/nazassist/
+        </a>
+      </div>
+    </div>
+  )}
+</div>
 
       </aside>
-
       {/* Chat Interface */}
       <main className="flex-1 flex flex-col">
         <div className="flex-1 overflow-y-auto p-6 space-y-4">

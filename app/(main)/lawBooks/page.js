@@ -3,11 +3,11 @@
 import { useState, useRef } from "react";
 
 const books = [
-  { name: "Book 1", author: "Author 1", publisher: "Publisher 1", year: "2021", href: "/Files/shit.txt" },
-  { name: "Book 2", author: "Author 2", publisher: "Publisher 2", year: "2020", href: "/Files/shit.txt" },
-  { name: "Book 3", author: "Author 3", publisher: "Publisher 3", year: "2019", href: "/Files/shit.txt" },
-  { name: "Book 4", author: "Author 4", publisher: "Publisher 4", year: "2018", href: "/Files/shit.txt" },
-  { name: "Book 5", author: "Author 5", publisher: "Publisher 5", year: "2017", href: "/Files/shit.txt" },
+  { name: "Basic Laws", author: " Office of General Counsel National Archives and Records Administration", year: "2016", href: "Books/Basic Laws.pdf" },
+  { name: "Fundamental Law of Pakistan", author: "A. K. Brohi", year: "1958", href: "Books/Fundamental Law of Pakistan.pdf" },
+  { name: "International Law Benchbook for the Judiciary in Pakistan", author: "RSIL", year: "2014", href: "Books/International-Law-Benchbook-for-the-Judiciary-in-Pakistan.pdf" },
+  { name: "Punjab Judicial Academy Law Journal", author: "Punjab Judicial Academy", year: "2022", href: "Books/Punjab Judicial Academy Law Journal.pdf" },
+  { name: "Pakistan Penal Code", author: "National Assembly", year: "1847", href: "Books/Pakistan Penal Code.pdf" },
 ];
 
 export default function lawBooks() {
@@ -54,7 +54,6 @@ function DownloadItem({ book }) {
         }}
       >
         <p className="text-white text-sm mt-2"><strong>Author:</strong> {book.author}</p>
-        <p className="text-white text-sm"><strong>Publisher:</strong> {book.publisher}</p>
         <p className="text-white text-sm"><strong>Year:</strong> {book.year}</p>
       </div>
     </li>

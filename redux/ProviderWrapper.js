@@ -7,20 +7,7 @@ import { PersistGate } from "redux-persist/integration/react";
 
 export default function ProviderWrapper({ children }) {
 
-
   // This useEffect Resests the useStates on server Shutdown 
-
-  // useEffect(() => {
-  //   const handleBeforeUnload = () => {
-  //     persistor.purge(); // Clears persisted Redux state on browser close
-  //   };
-
-  //   window.addEventListener("beforeunload", handleBeforeUnload);
-    
-  //   return () => {
-  //     window.removeEventListener("beforeunload", handleBeforeUnload);
-  //   };
-  // }, []);
 
   return (
     <Provider store={store}>

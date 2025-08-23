@@ -13,7 +13,6 @@ const Hero = () => {
 
 const { data: session } = useSession(); // Get session data
 
-  // const [isSignupOpen, toggleSignUpPopUp] = useState(false); // State to control Signup visibility
   const [isLoginOpen, setLoginOpen] = useState(false); // State to control Signup visibility
 
   const isSignupOpen = useSelector((state) => state.signUpBox.value)
@@ -25,23 +24,12 @@ const { data: session } = useSession(); // Get session data
 
   
   return (
-
-    // <section
-    //   className="relative w-screen h-screen flex flex-col justify-center sm:items-start itmes-center bg-contain bg-center bg-no-repeat "
-    //   style={{ backgroundImage: "url('/assets/images/homePage/backgroundXL.jpg')",
-    //           inlineSize: "100%",
-    //         display: "block"      }}
-    // >
    <section className="relative h-screen w-full flex flex-col justify-center sm:items-start itmes-center overflow-hidden">
   <img
    src="/assets/images/homePage/background.jpg"
       alt="Background"
       className="absolute h-[100%] w-screen object-fill"
     /> 
-      {/* <div className="text-5xl text-white z-10">{count}{count2}</div> */}
-      {/* <button className="bg-amber-50 text-3xl hover:bg-amber-300 z-10" onClick={ ()=>dispatch(increment())}>+</button> */}
-      {/* <button className="bg-amber-50 text-3xl hover:bg-amber-300 z-10" onClick={ ()=>dispatch(decrement())}>-</button> */}
-
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/50"></div>
@@ -55,7 +43,7 @@ const { data: session } = useSession(); // Get session data
           Your Personal <br /> Law Assistant
         </h1>
         <p className="text-lg xl:text-xl 2xl:text-2xl mt-4 ">
-          Get all the insights of law and legal minds at one place without much hassle.
+          A single platform for all your legal needs
         </p>
 <button
   type="button"

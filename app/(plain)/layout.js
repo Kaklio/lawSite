@@ -8,7 +8,6 @@ export default function PlainLayout({ children }) {
       <html lang="en">
         <body>
         <SessionWrapper>
-
          <ProviderWrapper> {/* ✅ Wrap with Redux provider */}
           {children}
         </ProviderWrapper>

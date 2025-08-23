@@ -1,0 +1,859 @@
+{
+  "Islamabad High Court": [
+    {
+      "name": "Sardar Muhammad Sarfraz Dogar",
+      "position": "Chief Justice",
+      "appointmentDate": "8 July 2025 (as CJ)",
+      "retirementDate": "",
+      "source": "en.wikipedia.org"
+    },
+    {
+      "name": "Mohsin Akhtar Kayani",
+      "position": "Senior Puisne Judge",
+      "appointmentDate": "23-Dec-15",
+      "retirementDate": "10-Feb-32",
+      "source": "en.wikipedia.org"
+    },
+    {
+      "name": "Tariq Mehmood Jahangiri",
+      "position": "Justice",
+      "appointmentDate": "30-Dec-20",
+      "retirementDate": "09-Jul-27",
+      "source": "en.wikipedia.org"
+    },
+    {
+      "name": "Babar Sattar",
+      "position": "Justice",
+      "appointmentDate": "30-Dec-20",
+      "retirementDate": "14-Feb-38",
+      "source": "en.wikipedia.org"
+    },
+    {
+      "name": "Sardar Ejaz Ishaq Khan",
+      "position": "Justice",
+      "appointmentDate": "17-Dec-21",
+      "retirementDate": "25-Dec-26",
+      "source": "en.wikipedia.org"
+    },
+    {
+      "name": "Arbab Muhammad Tahir",
+      "position": "Justice",
+      "appointmentDate": "17-Dec-21",
+      "retirementDate": "06-Sep-29",
+      "source": "en.wikipedia.org"
+    },
+    {
+      "name": "Saman Rafat Imtiaz",
+      "position": "Justice",
+      "appointmentDate": "17-Dec-21",
+      "retirementDate": "07-Jun-38",
+      "source": "en.wikipedia.org"
+    },
+    {
+      "name": "Khadim Hussain Soomro",
+      "position": "Justice",
+      "appointmentDate": "1 Feb 2025 (transferred)",
+      "retirementDate": "",
+      "source": "Transferred from SHC, permanent appointment,news article seniority list"
+    },
+    {
+      "name": "Muhammad Azam Khan",
+      "position": "Additional Judge",
+      "appointmentDate": "20-Jan-25",
+      "retirementDate": "22-Apr-30",
+      "source": "pakistantoday.com"
+    },
+    {
+      "name": "Muhammad Asif",
+      "position": "Additional Judge",
+      "appointmentDate": "20-Jan-25",
+      "retirementDate": "09-Jun-31",
+      "source": "pakistantoday.com"
+    },
+    {
+      "name": "Inaam Amin Minhas",
+      "position": "Additional Judge",
+      "appointmentDate": "20-Jan-25",
+      "retirementDate": "",
+      "source": "pakistantoday.com"
+    }
+  ],
+  "Balochistan High Court": [
+    {
+      "name": "Justice Rozi Khan Barrech",
+      "position": "Chief Justice",
+      "appointmentDate": "06-06-25",
+      "retirementDate": "06-04-26",
+      "source": ":contentReference[oaicite:0]{index=0}"
+    },
+    {
+      "name": "Muhammad Kamran Khan Mulakhail",
+      "position": "Senior Puisne Judge",
+      "appointmentDate": "30-08-13",
+      "retirementDate": "18-01-30",
+      "source": ":contentReference[oaicite:1]{index=1}"
+    },
+    {
+      "name": "Iqbal Ahmed Kasi",
+      "position": "Justice",
+      "appointmentDate": "07-07-22",
+      "retirementDate": "15-08-26",
+      "source": ":contentReference[oaicite:2]{index=2}"
+    },
+    {
+      "name": "Shaukat Ali Rakhshani",
+      "position": "Justice",
+      "appointmentDate": "07-07-22",
+      "retirementDate": "03-08-31",
+      "source": ":contentReference[oaicite:3]{index=3}"
+    },
+    {
+      "name": "Gul Hassan Tareen",
+      "position": "Justice",
+      "appointmentDate": "07-07-22",
+      "retirementDate": "23-06-36",
+      "source": ":contentReference[oaicite:4]{index=4}"
+    },
+    {
+      "name": "Muhammad Aamir Nawaz Rana",
+      "position": "Justice",
+      "appointmentDate": "07-07-22",
+      "retirementDate": "20-11-36",
+      "source": ":contentReference[oaicite:5]{index=5}"
+    },
+    {
+      "name": "Sardar Ahmed Haleemi",
+      "position": "Justice",
+      "appointmentDate": "07-07-22",
+      "retirementDate": "11-02-37",
+      "source": ":contentReference[oaicite:6]{index=6}"
+    },
+    {
+      "name": "Muhammad Ayub Khan",
+      "position": "Additional Judge",
+      "appointmentDate": "20-01-25",
+      "retirementDate": "04-02-38",
+      "source": ":contentReference[oaicite:7]{index=7}"
+    },
+    {
+      "name": "Najam-ud-Din Mengal",
+      "position": "Additional Judge",
+      "appointmentDate": "20-01-25",
+      "retirementDate": "31-12-41",
+      "source": ":contentReference[oaicite:8]{index=8}"
+    }
+  ],
+  "Peshawar High Court": [
+    {
+      "name": "Justice Syed Muhammad Attique Shah",
+      "position": "Chief Justice",
+      "appointmentDate": "27-03-17",
+      "retirementDate": "11-10-30",
+      "source": "turn0search0"
+    },
+    {
+      "name": "Justice Ijaz Anwar",
+      "position": "Senior Puisne Judge",
+      "appointmentDate": "27-03-17",
+      "retirementDate": "14-01-30",
+      "source": "turn0search0"
+    },
+    {
+      "name": "Justice Arshad Ali",
+      "position": "Justice",
+      "appointmentDate": "16-06-17",
+      "retirementDate": "09-04-33",
+      "source": "turn0search0"
+    },
+    {
+      "name": "Justice Sahibzada Asadullah",
+      "position": "Justice",
+      "appointmentDate": "19-08-19",
+      "retirementDate": "15-04-34",
+      "source": "turn0search0"
+    },
+    {
+      "name": "Justice Muhammad Naeem Anwar",
+      "position": "Justice",
+      "appointmentDate": "19-08-19",
+      "retirementDate": "14-06-34",
+      "source": "turn0search0"
+    },
+    {
+      "name": "Justice Waqar Ahmad Khan",
+      "position": "Justice",
+      "appointmentDate": "19-08-19",
+      "retirementDate": "19-03-36",
+      "source": "turn0search0"
+    },
+    {
+      "name": "Justice Kamran Hayat Miankhel",
+      "position": "Justice",
+      "appointmentDate": "11-02-22",
+      "retirementDate": "",
+      "source": "Retirement date not listed"
+    },
+    {
+      "name": "Justice Muhammad Ijaz Khan",
+      "position": "Justice",
+      "appointmentDate": "11-02-22",
+      "retirementDate": "15-04-34",
+      "source": "turn0search0"
+    },
+    {
+      "name": "Justice Muhammad Faheem Wali",
+      "position": "Justice",
+      "appointmentDate": "11-02-22",
+      "retirementDate": "",
+      "source": "Retirement not listed"
+    },
+    {
+      "name": "Justice Fazal Subhan",
+      "position": "Justice",
+      "appointmentDate": "18-07-22",
+      "retirementDate": "",
+      "source": "Tenure extended in 2024"
+    },
+    {
+      "name": "Justice Dr. Khurshid Iqbal",
+      "position": "Justice",
+      "appointmentDate": "18-07-22",
+      "retirementDate": "",
+      "source": "Tenure extended in 2024"
+    },
+    {
+      "name": "Justice Muhammad Tariq Afridi",
+      "position": "Additional Judge",
+      "appointmentDate": "04-02-25",
+      "retirementDate": "",
+      "source": "Subject to confirmation"
+    },
+    {
+      "name": "Justice Abdul Fayyaz",
+      "position": "Additional Judge",
+      "appointmentDate": "04-02-25",
+      "retirementDate": "",
+      "source": "Subject to confirmation"
+    },
+    {
+      "name": "Justice Farah Jamshed",
+      "position": "Additional Judge",
+      "appointmentDate": "04-02-25",
+      "retirementDate": "",
+      "source": "Subject to confirmation; lone female judge"
+    },
+    {
+      "name": "Justice Inam Ullah Khan",
+      "position": "Additional Judge",
+      "appointmentDate": "04-02-25",
+      "retirementDate": "",
+      "source": "Subject to confirmation"
+    },
+    {
+      "name": "Justice Sabit Ullah Khan",
+      "position": "Additional Judge",
+      "appointmentDate": "04-02-25",
+      "retirementDate": "",
+      "source": "Subject to confirmation"
+    },
+    {
+      "name": "Justice Salah ud Din",
+      "position": "Additional Judge",
+      "appointmentDate": "04-02-25",
+      "retirementDate": "",
+      "source": "Subject to confirmation"
+    },
+    {
+      "name": "Justice Sadiq Ali",
+      "position": "Additional Judge",
+      "appointmentDate": "04-02-25",
+      "retirementDate": "",
+      "source": "Subject to confirmation"
+    },
+    {
+      "name": "Justice Syed Mudasser Ameer",
+      "position": "Additional Judge",
+      "appointmentDate": "04-02-25",
+      "retirementDate": "",
+      "source": "Subject to confirmation"
+    },
+    {
+      "name": "Justice Aurangzeb",
+      "position": "Additional Judge",
+      "appointmentDate": "04-02-25",
+      "retirementDate": "",
+      "source": "Subject to confirmation"
+    },
+    {
+      "name": "Justice Qazi Jawad Ehsanullah",
+      "position": "Additional Judge",
+      "appointmentDate": "04-02-25",
+      "retirementDate": "",
+      "source": "Subject to confirmation"
+    }
+  ],
+  "Lahore High Court": [
+    {
+      "name": "Justice Aalia Neelum",
+      "position": "Chief Justice",
+      "appointmentDate": "12-Apr-13",
+      "retirementDate": "11-Nov-28",
+      "source": "lhc.gov.pk :contentReference[oaicite:0]{index=0}"
+    },
+    {
+      "name": "Justice Shujaat Ali Khan",
+      "position": "Senior Puisne Judge",
+      "appointmentDate": "27-Mar-12",
+      "retirementDate": "22-Apr-26",
+      "source": "lhc.gov.pk :contentReference[oaicite:1]{index=1}"
+    },
+    {
+      "name": "Justice Abid Aziz Sheikh",
+      "position": "Justice",
+      "appointmentDate": "12-Apr-13",
+      "retirementDate": "25-Apr-29",
+      "source": "lhc.gov.pk :contentReference[oaicite:2]{index=2}"
+    },
+    {
+      "name": "Justice Sadaqat Ali Khan",
+      "position": "Justice",
+      "appointmentDate": "29-Oct-13",
+      "retirementDate": "20-Jan-29",
+      "source": "lhc.gov.pk :contentReference[oaicite:3]{index=3}"
+    },
+    {
+      "name": "Justice Shams Mehmood Mirza",
+      "position": "Justice",
+      "appointmentDate": "22-Mar-14",
+      "retirementDate": "06-Mar-28",
+      "source": "lhc.gov.pk :contentReference[oaicite:4]{index=4}"
+    },
+    {
+      "name": "Justice Syed Shahbaz Ali Rizvi",
+      "position": "Justice",
+      "appointmentDate": "22-Mar-14",
+      "retirementDate": "21-Apr-28",
+      "source": "lhc.gov.pk :contentReference[oaicite:5]{index=5}"
+    },
+    {
+      "name": "Justice Faisal Zaman Khan",
+      "position": "Justice",
+      "appointmentDate": "22-Mar-14",
+      "retirementDate": "30-Jul-29",
+      "source": "lhc.gov.pk :contentReference[oaicite:6]{index=6}"
+    },
+    {
+      "name": "Justice Masud Abid Naqvi",
+      "position": "Justice",
+      "appointmentDate": "07-Nov-14",
+      "retirementDate": "04-Jul-26",
+      "source": "lhc.gov.pk :contentReference[oaicite:7]{index=7}"
+    },
+    {
+      "name": "Justice Shahid Karim",
+      "position": "Justice",
+      "appointmentDate": "07-Nov-14",
+      "retirementDate": "19-Aug-26",
+      "source": "lhc.gov.pk :contentReference[oaicite:8]{index=8}"
+    },
+    {
+      "name": "Justice Mirza Viqas Rauf",
+      "position": "Justice",
+      "appointmentDate": "07-Nov-14",
+      "retirementDate": "26-Apr-28",
+      "source": "lhc.gov.pk :contentReference[oaicite:9]{index=9}"
+    },
+    {
+      "name": "Justice Ch. Muhammad Iqbal",
+      "position": "Justice",
+      "appointmentDate": "07-Nov-14",
+      "retirementDate": "31-Oct-28",
+      "source": "lhc.gov.pk :contentReference[oaicite:10]{index=10}"
+    },
+    {
+      "name": "Justice Shehram Sarwar Ch.",
+      "position": "Justice",
+      "appointmentDate": "08-Jun-15",
+      "retirementDate": "23-Apr-30",
+      "source": "lhc.gov.pk :contentReference[oaicite:11]{index=11}"
+    },
+    {
+      "name": "Justice Muhammad Sajid Mehmood Sethi",
+      "position": "Justice",
+      "appointmentDate": "08-Jun-15",
+      "retirementDate": "18-May-30",
+      "source": "lhc.gov.pk :contentReference[oaicite:12]{index=12}"
+    },
+    {
+      "name": "Justice Asjad Javaid Ghural",
+      "position": "Justice",
+      "appointmentDate": "26-Nov-16",
+      "retirementDate": "29-Apr-26",
+      "source": "lhc.gov.pk :contentReference[oaicite:13]{index=13}"
+    },
+    {
+      "name": "Justice Tariq Saleem Sheikh",
+      "position": "Justice",
+      "appointmentDate": "26-Nov-16",
+      "retirementDate": "23-Jun-27",
+      "source": "lhc.gov.pk :contentReference[oaicite:14]{index=14}"
+    },
+    {
+      "name": "Justice Jawad Hassan",
+      "position": "Justice",
+      "appointmentDate": "26-Nov-16",
+      "retirementDate": "27-Jul-29",
+      "source": "lhc.gov.pk :contentReference[oaicite:15]{index=15}"
+    },
+    {
+      "name": "Justice Muzamil Akhtar Shabir",
+      "position": "Justice",
+      "appointmentDate": "26-Nov-16",
+      "retirementDate": "13-Jan-31",
+      "source": "lhc.gov.pk :contentReference[oaicite:16]{index=16}"
+    },
+    {
+      "name": "Justice Farooq Haider",
+      "position": "Justice",
+      "appointmentDate": "23-Oct-18",
+      "retirementDate": "23-Apr-30",
+      "source": "lhc.gov.pk :contentReference[oaicite:17]{index=17}"
+    },
+    {
+      "name": "Justice Muhammad Waheed Khan",
+      "position": "Justice",
+      "appointmentDate": "23-Oct-18",
+      "retirementDate": "27-Apr-31",
+      "source": "lhc.gov.pk :contentReference[oaicite:18]{index=18}"
+    },
+    {
+      "name": "Justice Rasaal Hasan Syed",
+      "position": "Justice",
+      "appointmentDate": "23-Oct-18",
+      "retirementDate": "10-Sep-32",
+      "source": "lhc.gov.pk :contentReference[oaicite:19]{index=19}"
+    },
+    {
+      "name": "Justice Asim Hafeez",
+      "position": "Justice",
+      "appointmentDate": "23-Oct-18",
+      "retirementDate": "13-Sep-32",
+      "source": "lhc.gov.pk :contentReference[oaicite:20]{index=20}"
+    },
+    {
+      "name": "Justice Sadiq Mahmud Khurram",
+      "position": "Justice",
+      "appointmentDate": "23-Oct-18",
+      "retirementDate": "07-Jan-35",
+      "source": "lhc.gov.pk :contentReference[oaicite:21]{index=21}"
+    },
+    {
+      "name": "Justice Ahmad Nadeem Arshad",
+      "position": "Justice",
+      "appointmentDate": "07-May-21",
+      "retirementDate": "01-May-27",
+      "source": "lhc.gov.pk :contentReference[oaicite:22]{index=22}"
+    },
+    {
+      "name": "Justice Muhammad Tariq Nadeem",
+      "position": "Justice",
+      "appointmentDate": "07-May-21",
+      "retirementDate": "18-Jul-29",
+      "source": "lhc.gov.pk :contentReference[oaicite:23]{index=23}"
+    },
+    {
+      "name": "Justice Muhammad Amjad Rafiq",
+      "position": "Justice",
+      "appointmentDate": "07-May-21",
+      "retirementDate": "01-Feb-32",
+      "source": "lhc.gov.pk :contentReference[oaicite:24]{index=24}"
+    },
+    {
+      "name": "Justice Abid Hussain Chattha",
+      "position": "Justice",
+      "appointmentDate": "07-May-21",
+      "retirementDate": "01-Apr-34",
+      "source": "lhc.gov.pk :contentReference[oaicite:25]{index=25}"
+    },
+    {
+      "name": "Justice Anwaar Hussain",
+      "position": "Justice",
+      "appointmentDate": "07-May-21",
+      "retirementDate": "15-Jan-35",
+      "source": "lhc.gov.pk :contentReference[oaicite:26]{index=26}"
+    },
+    {
+      "name": "Justice Ali Zia Bajwa",
+      "position": "Justice",
+      "appointmentDate": "07-May-21",
+      "retirementDate": "30-Jun-35",
+      "source": "lhc.gov.pk :contentReference[oaicite:27]{index=27}"
+    },
+    {
+      "name": "Justice Sultan Tanvir Ahmad",
+      "position": "Justice",
+      "appointmentDate": "07-May-21",
+      "retirementDate": "27-Aug-35",
+      "source": "lhc.gov.pk :contentReference[oaicite:28]{index=28}"
+    },
+    {
+      "name": "Justice Muhammad Raza Qureshi",
+      "position": "Justice",
+      "appointmentDate": "07-May-21",
+      "retirementDate": "14-Sep-35",
+      "source": "lhc.gov.pk :contentReference[oaicite:29]{index=29}"
+    },
+    {
+      "name": "Justice Raheel Kamran",
+      "position": "Justice",
+      "appointmentDate": "07-May-21",
+      "retirementDate": "20-Jan-36",
+      "source": "lhc.gov.pk :contentReference[oaicite:30]{index=30}"
+    },
+    {
+      "name": "Justice Hassan Nawaz Makhdoom",
+      "position": "Justice",
+      "appointmentDate": "10-Feb-25",
+      "retirementDate": "31-Oct-31",
+      "source": "lhc.gov.pk :contentReference[oaicite:31]{index=31}"
+    },
+    {
+      "name": "Justice Malik Waqar Haider Awan",
+      "position": "Justice",
+      "appointmentDate": "10-Feb-25",
+      "retirementDate": "06-Jun-33",
+      "source": "lhc.gov.pk :contentReference[oaicite:32]{index=32}"
+    },
+    {
+      "name": "Justice Sardar Akbar Ali",
+      "position": "Justice",
+      "appointmentDate": "10-Feb-25",
+      "retirementDate": "05-Jul-34",
+      "source": "lhc.gov.pk :contentReference[oaicite:33]{index=33}"
+    },
+    {
+      "name": "Justice Syed Ahsan Raza Kazmi",
+      "position": "Justice",
+      "appointmentDate": "10-Feb-25",
+      "retirementDate": "23-Apr-38",
+      "source": "lhc.gov.pk :contentReference[oaicite:34]{index=34}"
+    },
+    {
+      "name": "Justice Malik Javid Iqbal Wains",
+      "position": "Justice",
+      "appointmentDate": "10-Feb-25",
+      "retirementDate": "17-Jan-39",
+      "source": "lhc.gov.pk :contentReference[oaicite:35]{index=35}"
+    },
+    {
+      "name": "Justice Muhammad Jawad Zafar",
+      "position": "Justice",
+      "appointmentDate": "10-Feb-25",
+      "retirementDate": "05-Dec-39",
+      "source": "lhc.gov.pk :contentReference[oaicite:36]{index=36}"
+    },
+    {
+      "name": "Justice Khalid Ishaq",
+      "position": "Justice",
+      "appointmentDate": "10-Feb-25",
+      "retirementDate": "03-Feb-40",
+      "source": "lhc.gov.pk :contentReference[oaicite:37]{index=37}"
+    },
+    {
+      "name": "Justice Malik Muhammad Awais Khalid",
+      "position": "Justice",
+      "appointmentDate": "10-Feb-25",
+      "retirementDate": "23-Jun-40",
+      "source": "lhc.gov.pk :contentReference[oaicite:38]{index=38}"
+    },
+    {
+      "name": "Justice Ch. Sultan Mahmood",
+      "position": "Justice",
+      "appointmentDate": "10-Feb-25",
+      "retirementDate": "03-Jul-40",
+      "source": "lhc.gov.pk :contentReference[oaicite:39]{index=39}"
+    },
+    {
+      "name": "Justice Raja Ghazanfar Ali Khan",
+      "position": "Justice",
+      "appointmentDate": "05-Mar-25",
+      "retirementDate": "24-Mar-30",
+      "source": "lhc.gov.pk :contentReference[oaicite:40]{index=40}"
+    },
+    {
+      "name": "Justice Tanveer Ahmad Sheikh",
+      "position": "Justice",
+      "appointmentDate": "05-Mar-25",
+      "retirementDate": "26-Dec-27",
+      "source": "lhc.gov.pk :contentReference[oaicite:41]{index=41}"
+    },
+    {
+      "name": "Justice Tariq Mahmood Bajwa",
+      "position": "Justice",
+      "appointmentDate": "05-Mar-25",
+      "retirementDate": "30-Nov-30",
+      "source": "lhc.gov.pk :contentReference[oaicite:42]{index=42}"
+    },
+    {
+      "name": "Justice Abher Gul Khan",
+      "position": "Justice",
+      "appointmentDate": "05-Mar-25",
+      "retirementDate": "30-Dec-34",
+      "source": "lhc.gov.pk :contentReference[oaicite:43]{index=43}"
+    }
+  ],
+  "Sindh High Court": [
+    {
+      "name": "Muhammad Junaid Ghaffar",
+      "position": "Chief Justice (Acting)",
+      "appointmentDate": "31-08-13",
+      "retirementDate": "13-09-25",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:0]{index=0}"
+    },
+    {
+      "name": "Zafar Ahmed Rajput",
+      "position": "Senior Puisne Judge",
+      "appointmentDate": "31-08-13",
+      "retirementDate": "15-10-27",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:1]{index=1}"
+    },
+    {
+      "name": "Muhammad Iqbal Kalhoro",
+      "position": "Judge",
+      "appointmentDate": "30-05-14",
+      "retirementDate": "18-07-30",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:2]{index=2}"
+    },
+    {
+      "name": "Zulfiqar Ahmad Khan",
+      "position": "Judge",
+      "appointmentDate": "30-10-15",
+      "retirementDate": "31-07-25",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:3]{index=3}"
+    },
+    {
+      "name": "Mutahood A. Khan",
+      "position": "Judge",
+      "appointmentDate": "30-10-15",
+      "retirementDate": "23-07-26",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:4]{index=4}"
+    },
+    {
+      "name": "Muhammad Karim Khan Agha",
+      "position": "Judge",
+      "appointmentDate": "30-10-15",
+      "retirementDate": "19-09-26",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:5]{index=5}"
+    },
+    {
+      "name": "Muhammad Faisal Kamal Alam",
+      "position": "Judge",
+      "appointmentDate": "30-10-15",
+      "retirementDate": "07-05-31",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:6]{index=6}"
+    },
+    {
+      "name": "Arshad Hussain Khan",
+      "position": "Judge",
+      "appointmentDate": "29-06-16",
+      "retirementDate": "04-02-29",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:7]{index=7}"
+    },
+    {
+      "name": "Muhammad Saleem Jessar",
+      "position": "Judge",
+      "appointmentDate": "29-06-16",
+      "retirementDate": "11-09-29",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:8]{index=8}"
+    },
+    {
+      "name": "Khadim Hussain Tunio",
+      "position": "Judge",
+      "appointmentDate": "30-11-16",
+      "retirementDate": "31-03-26",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:9]{index=9}"
+    },
+    {
+      "name": "Omar Sial",
+      "position": "Judge",
+      "appointmentDate": "30-11-16",
+      "retirementDate": "20-10-31",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:10]{index=10}"
+    },
+    {
+      "name": "Adnan-ul-Karim Memon",
+      "position": "Judge",
+      "appointmentDate": "30-11-16",
+      "retirementDate": "07-01-33",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:11]{index=11}"
+    },
+    {
+      "name": "Yousuf Ali Sayeed",
+      "position": "Judge",
+      "appointmentDate": "30-11-16",
+      "retirementDate": "18-08-33",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:12]{index=12}"
+    },
+    {
+      "name": "Shamsuddin Abbasi",
+      "position": "Judge",
+      "appointmentDate": "06-02-18",
+      "retirementDate": "24-10-28",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:13]{index=13}"
+    },
+    {
+      "name": "Amjad Ali Sahito",
+      "position": "Judge",
+      "appointmentDate": "06-02-18",
+      "retirementDate": "02-05-29",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:14]{index=14}"
+    },
+    {
+      "name": "Adnan Iqbal Chaudhry",
+      "position": "Judge",
+      "appointmentDate": "06-02-18",
+      "retirementDate": "14-12-33",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:15]{index=15}"
+    },
+    {
+      "name": "Agha Faisal",
+      "position": "Judge",
+      "appointmentDate": "06-02-18",
+      "retirementDate": "07-11-34",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:16]{index=16}"
+    },
+    {
+      "name": "Abdul Mobeen Lakho",
+      "position": "Judge",
+      "appointmentDate": "29-08-19",
+      "retirementDate": "13-11-32",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:17]{index=17}"
+    },
+    {
+      "name": "Zulfiqar Ali Sangi",
+      "position": "Judge",
+      "appointmentDate": "29-08-19",
+      "retirementDate": "14-09-35",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:18]{index=18}"
+    },
+    {
+      "name": "Amjad Ali Bohio",
+      "position": "Additional Judge",
+      "appointmentDate": "14-04-23",
+      "retirementDate": "01-05-27",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:19]{index=19}"
+    },
+    {
+      "name": "Sana Akram Minhas",
+      "position": "Additional Judge",
+      "appointmentDate": "14-04-23",
+      "retirementDate": "27-09-30",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:20]{index=20}"
+    },
+    {
+      "name": "Jawad Akbar Sarwana",
+      "position": "Additional Judge",
+      "appointmentDate": "14-04-23",
+      "retirementDate": "25-08-34",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:21]{index=21}"
+    },
+    {
+      "name": "Muhammad Abdur Rahman",
+      "position": "Additional Judge",
+      "appointmentDate": "14-04-23",
+      "retirementDate": "23-05-38",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:22]{index=22}"
+    },
+    {
+      "name": "Arbab Ali Hakro",
+      "position": "Additional Judge",
+      "appointmentDate": "14-04-23",
+      "retirementDate": "02-08-38",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:23]{index=23}"
+    },
+    {
+      "name": "Miran Muhammad Shah",
+      "position": "Additional Judge",
+      "appointmentDate": "29-01-25",
+      "retirementDate": "28-01-26",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:24]{index=24}"
+    },
+    {
+      "name": "Tasneem Sultana",
+      "position": "Additional Judge",
+      "appointmentDate": "29-01-25",
+      "retirementDate": "28-01-26",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:25]{index=25}"
+    },
+    {
+      "name": "Riazat Ali Sahar",
+      "position": "Additional Judge",
+      "appointmentDate": "29-01-25",
+      "retirementDate": "28-01-26",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:26]{index=26}"
+    },
+    {
+      "name": "Muhammad Hasan (Akber)",
+      "position": "Additional Judge",
+      "appointmentDate": "29-01-25",
+      "retirementDate": "28-01-30",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:27]{index=27}"
+    },
+    {
+      "name": "Khalid Hussain Shahani",
+      "position": "Additional Judge",
+      "appointmentDate": "29-01-25",
+      "retirementDate": "31-12-30",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:28]{index=28}"
+    },
+    {
+      "name": "Abdul Hamid Bhurgri",
+      "position": "Additional Judge",
+      "appointmentDate": "29-01-25",
+      "retirementDate": "14-07-32",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:29]{index=29}"
+    },
+    {
+      "name": "Syed Fiaz ul Hassan Shah",
+      "position": "Additional Judge",
+      "appointmentDate": "29-01-25",
+      "retirementDate": "22-06-35",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:30]{index=30}"
+    },
+    {
+      "name": "Jan Ali Junejo",
+      "position": "Additional Judge",
+      "appointmentDate": "29-01-25",
+      "retirementDate": "15-05-36",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:31]{index=31}"
+    },
+    {
+      "name": "Nisar Ahmed Bhanbhro",
+      "position": "Additional Judge",
+      "appointmentDate": "29-01-25",
+      "retirementDate": "24-01-38",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:32]{index=32}"
+    },
+    {
+      "name": "Ali Haider 'Ada'",
+      "position": "Additional Judge",
+      "appointmentDate": "29-01-25",
+      "retirementDate": "04-04-40",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:33]{index=33}"
+    },
+    {
+      "name": "Muhammad Osman Ali Hadi",
+      "position": "Additional Judge",
+      "appointmentDate": "29-01-25",
+      "retirementDate": "18-08-40",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:34]{index=34}"
+    },
+    {
+      "name": "Muhammad Jaffer Raza",
+      "position": "Additional Judge",
+      "appointmentDate": "29-01-25",
+      "retirementDate": "26-12-44",
+      "source": "sindhhighcourt.gov.pk/sitting_judges.php :contentReference[oaicite:35]{index=35}"
+    }
+  ]
+}

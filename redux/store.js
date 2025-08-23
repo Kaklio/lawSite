@@ -3,6 +3,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import signupReducer from "../states/signUpSlice";
 import userReducer from "../states/userSlice";
+import screenReducer from "../states/screenSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -16,6 +17,7 @@ export const store = configureStore({
   reducer: {
     signUpBox: persistedSignUpReducer,
     user: persistedUserReducer,
+    screen: screenReducer, 
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

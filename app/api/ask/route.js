@@ -6,14 +6,58 @@ import Groq from "groq-sdk";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { connectDB } from "@/lib/db";
+import fs from 'fs';
 import Chat from "@/models/Chat";
 import User from "@/models/User";
+import path from 'path';
+import { head } from '@vercel/blob';
 
-let vectorStore;
+
+// app/api/ask/route.js
+
+let vectorStorePromise = null;
 let groq;
+let vectorStore;
+
+async function loadVectorStore() {
+  if (vectorStorePromise) return vectorStorePromise;
+
+  vectorStorePromise = (async () => {
+    const embeddings = new HuggingFaceInferenceEmbeddings({
+      apiKey: process.env.HF_API_KEY,
+      model: "BAAI/bge-base-en-v1.5",
+    });
+
+    if (process.env.VERCEL) {
+      const tmpDir = "/tmp/legal_vector_store";
+      fs.mkdirSync(tmpDir, { recursive: true });
+
+      const files = ["faiss.index", "docstore.json"];
+      for (const file of files) {
+        const meta = await head(`legal_vector_store/${file}`, {
+          token: process.env.BLOB_READ_WRITE_TOKEN,
+        });
+        const res = await fetch(meta.downloadUrl);
+        const data = Buffer.from(await res.arrayBuffer());
+        fs.writeFileSync(path.join(tmpDir, file), data);
+      }
+
+      console.log("✅ Vector store downloaded into /tmp");
+      return FaissStore.load(tmpDir, embeddings);
+    } else {
+      return FaissStore.load(path.resolve("./legal_vector_store"), embeddings);
+    }
+  })();
+
+    if (!groq) {
+    groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+  }
+  return vectorStorePromise;
+}
+
 
 async function initializeClients() {
-  if (!vectorStore) {
+    if (!vectorStore) {
     const embeddings = new HuggingFaceInferenceEmbeddings({
       apiKey: process.env.HF_API_KEY,
       model: "BAAI/bge-base-en-v1.5",
@@ -22,8 +66,32 @@ async function initializeClients() {
     const testEmbedding = await embeddings.embedQuery("test");
     console.log("Embedding dimension:", testEmbedding.length);
 
-    vectorStore = await FaissStore.load("./legal_vector_store", embeddings);
-    console.log("Vector store loaded");
+    if (process.env.VERCEL) {
+      // ✅ Running on Vercel → fetch from Blob storage into /tmp
+      const tmpDir = "/tmp/legal_vector_store";
+      fs.mkdirSync(tmpDir, { recursive: true });
+
+      const files = ["faiss.index", "docstore.json"];
+      for (const file of files) {
+        const meta = await head(`legal_vector_store/${file}`, {
+          token: process.env.BLOB_READ_WRITE_TOKEN,
+        });
+        const res = await fetch(meta.downloadUrl);
+        const data = Buffer.from(await res.arrayBuffer());
+        fs.writeFileSync(path.join(tmpDir, file), data);
+      }
+
+      vectorStore = await FaissStore.load(tmpDir, embeddings);
+      console.log("✅ Vector store loaded from Vercel Blob");
+    } else {
+      // ✅ Running locally → load from local folder
+      vectorStore = await FaissStore.load(
+        path.resolve("./legal_vector_store"),
+        embeddings
+      );
+      console.log("✅ Vector store loaded from local folder");
+    }
+
     console.log("Index dimensions:", vectorStore.index.getDimension());
   }
 
@@ -67,7 +135,12 @@ if (session?.user?.email) {
   user = await User.findOne({ email: session.user.email });
 }
 
-    await initializeClients();
+    // await initializeClients();
+
+    // 🔑 cached, no re-download per request
+    const vectorStore = await loadVectorStore();
+
+
     const relevantDocs = await vectorStore.similaritySearch(question, 3);
     const context = relevantDocs.map(doc => doc.pageContent).join("\n\n---\n\n");
 

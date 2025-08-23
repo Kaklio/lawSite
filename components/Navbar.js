@@ -9,11 +9,16 @@ import SignupBtn from "./SignupBtn";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSignUpBox, closeSignUpBox } from "@/states/signUpSlice";
 import { useSession, signOut } from "next-auth/react";
+import { setIsLandscape } from "@/states/screenSlice"; 
+
+
 
 const Navbar = () => {
   const { data: session } = useSession(); // Get session data
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
+  const isLandscape = useSelector((state) => state.screen.isLandscape);
+
 
   const isSignupOpen = useSelector((state) => state.signUpBox.value);
   const dispatch = useDispatch();
@@ -36,8 +41,9 @@ useEffect(() => {
 
   return (
     <>
-      <nav className={`sticky top-0 z-50 flex flex-col md:flex-row purple-bg text-white md:justify-between items-center font-['Inter'] border-b-2 border-b-amber-50`}>
-        <div className="flex text-3xl xl:text-3xl 2xl:text-5xl ml-3 my-5 xl:my-4 2xl:my-7 font-bold">
+      <nav className={`sticky top-0 z-50 flex flex-col md:flex-row purple-bg text-white md:justify-between
+         items-center font-['Inter'] border-b-2 border-b-amber-50`}>
+        <div className="flex text-3xl xl:text-3xl 2xl:text-5xl ml-3 my-4 xl:my-4 2xl:my-7 font-bold">
           <Link
             href="/"
             className="group  hover:scale-x-[101%] hover:scale-y-[104%] flex items-center transition-all duration-400 ease-in-out"
@@ -50,14 +56,14 @@ useEffect(() => {
             </span>
           </Link>
         </div>
-        <ul className="flex gap-8 text-2xl xl:text-2xl 2xl:text-3xl xl:my-4 2xl:my-7 mx-7">
+        <ul className={`flex ${isLandscape ? "text-xl gap-3 xl:gap-8":"text-2xl gap-8" } xl:text-2xl 2xl:text-3xl xl:my-4 2xl:my-7 mx-7`}>
           <Link href="/" className="hover:text-purple-600 transition-all duration-400 ease-in-out">
             <li>Home</li>
           </Link>
-          <Link href="/" className="hover:text-purple-600 transition-all duration-400 ease-in-out">
+          <Link href="/About" className="hover:text-purple-600 transition-all duration-400 ease-in-out">
             <li>About</li>
           </Link>
-          <Link href="/" className="hover:text-purple-600 transition-all duration-400 ease-in-out">
+          <Link href="/Contact" className="hover:text-purple-600 transition-all duration-400 ease-in-out">
             <li>Contact</li>
           </Link>
         </ul>
@@ -74,7 +80,9 @@ useEffect(() => {
             <>
               <button
                 onClick={() => setShowDropDown(!showDropDown)}
-                className="max-w-94 mx-10 text-white overflow-hidden bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm xl:text-xl px-5 py-2.5 text-center inline-flex items-center"
+                className="max-w-94 mx-10 text-white overflow-hidden bg-purple-700 hover:bg-purple-800 focus:ring-4
+                focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm xl:text-xl px-5 py-2.5
+                text-center inline-flex items-center"
                 type="button"
               >
                 Welcome<br />{session.user.username}

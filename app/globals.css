@@ -19,6 +19,7 @@ body {
     :root {
       --dark-purple: #12022b; /* Custom purple */
       --dark-green: #012706;
+      --dark-maroon: #3b0000; /* Custom maroon */
     }
 
   
@@ -28,6 +29,9 @@ body {
       }
     .green-bg {
         background-color: var(--dark-green) !important;
+      }
+    .maroon-bg {
+        background-color: var(--dark-maroon) !important;
       }
 
 }  
@@ -48,4 +52,3 @@ body {
     }
   }
 }
-
