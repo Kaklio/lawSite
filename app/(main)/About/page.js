@@ -11,20 +11,19 @@ export default function AboutPage() {
                 <section className="text-center">
                     <h1 className="text-4xl font-bold text-white mb-4">About Us</h1>
                     <p className="text-gray-300 max-w-2xl mx-auto">
-                        We are committed to providing professional legal guidance and resources 
-                        with clarity, integrity, and dedication. Our mission is to make legal 
-                        knowledge accessible and reliable for everyone.
+                        We are committed to providing simplistic legal guidance and resources 
+                        with clarity and dedication. Our mission is to make reliable legal 
+                        knowledge accessible for everyone.
                     </p>
                 </section>
 
                 {/* Our Motto */}
                 <section className="bg-[#2d2340] rounded-xl p-6 shadow-md">
-                    <h2 className="text-2xl font-semibold text-purple-300 mb-3">Our Motto</h2>
+                    <h2 className="text-2xl font-semibold text-purple-300 mb-3">We say</h2>
                     <p className="text-gray-200 leading-relaxed">
                         &ldquo;Justice. Clarity. Accessibility.&rdquo; <br />
-                        We believe legal help should be clear, approachable, and empowering. 
-                        Our platform exists to bridge the gap between legal knowledge and the 
-                        people who need it most.
+                        We believe legal help should be accessible, approachable, and empowering. 
+                        Our platform exists to bridge the gap between legal aspirants knowledge that they most require.
                     </p>
                 </section>
 
@@ -41,12 +40,12 @@ export default function AboutPage() {
                     <div className="flex-1">
                         <h2 className="text-2xl font-semibold text-purple-300 mb-2">Our Founder</h2>
                         <p className="text-gray-200 leading-relaxed">
-                            Our Founder, Sentinel Junaid Falcon Shah is a visionary legal 
-                            expert with a passion for making legal information accessible
-                            to all in Pakistan, A country where legal knowledge is often
-                            shrouded in complexity. He established Sentinel Associates
-                            to empower individuals with the tools and insights they need to
-                            navigate the legal landscape confidently and conveniently.
+                            Our Founder, Junaid Ferhaj is a visionary legal 
+                            expert with driving passion for making legal information accessible
+                            to everyone in Pakistan, a country where legal knowledge is often
+                            clouded in complexity. He established Sentinel Associates, a platform
+                            dedicated to empower individuals with the tools and insights that are required to
+                            navigate legal landscape confidently and conveniently.
                         </p>
                     </div>
                 </section>
