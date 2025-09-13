@@ -3,6 +3,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useSelector } from "react-redux";
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { SendHorizontal, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Trash, Pencil, X, PhoneCall } from 'lucide-react';
@@ -18,7 +19,54 @@ export default function LegalQueries() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedChatIds, setSelectedChatIds] = useState([]);
   const [humanContact, setHumanContact] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
+   const isLandscape = useSelector((state) => state.screen.isLandscape);
+  
+
+     const [navbarHeight, setNavbarHeight] = useState(0);
+  const [footerHeight, setFooterHeight] = useState(0)
+  // Get navbar and footer heights dynamically
+  useEffect(() => {
+    const getHeights = () => {
+      const navbar = document.querySelector('header, nav, [role="navigation"]');
+      const footer = document.querySelector('footer, [role="contentinfo"]');
+      
+      if (navbar) setNavbarHeight(navbar.offsetHeight);
+      if (footer) setFooterHeight(footer.offsetHeight);
+    };
+    
+    // Run initially and after a brief delay to ensure components are rendered
+    getHeights();
+    setTimeout(getHeights, 100);
+    
+    window.addEventListener('resize', getHeights);
+    return () => window.removeEventListener('resize', getHeights);
+  }, []);
+  
+
+
+  
+  // Detect mobile devices and handle sidebar state accordingly
+  useEffect(() => {
+    const checkIfMobile = () => {
+      const isMobileDevice = window.innerWidth <= 768;
+      setIsMobile(isMobileDevice);
+      
+      // On mobile, close sidebar by default, but keep it open in landscape if there's space
+      if (isMobileDevice) {
+        setIsSidebarOpen(isLandscape && window.innerWidth >= 768);
+      }
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, [isLandscape]);
+  
 
   useEffect(() => {
     if (status === 'authenticated') fetchChats();
@@ -44,7 +92,17 @@ try {
   const handleChatSelect = (chat) => {
     setChatId(chat._id);
     setMessages(chat.messages);
+     if (isMobile) {
+      setIsSidebarOpen(false);
+    }
   };
+
+ // Toggle sidebar with special handling for mobile
+  const toggleSidebar = () => {
+    // On mobile overlay content when sidebar is open
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+  
 
   const formatMessage = (content) => {
     const thinkMatch = content.match(/<think>([\s\S]*?)<\/think>/);
@@ -89,7 +147,22 @@ const headingsFormatted = visible.replace(
   return (
     <div className="flex h-screen bg-gray-100 dark:bg-gray-950">
       {/* Stylish Sidebar */}
-      <aside className={`transition-all duration-300 ${isSidebarOpen ? 'w-72' : 'w-16'} bg-gray-900 text-white flex flex-col p-4 overflow-y-auto`}>
+        <aside className={`
+        transition-all duration-300 z-30
+        ${isMobile ? 'fixed left-0 h-auto' : 'relative'}
+        ${isSidebarOpen ? 'w-72' : 'w-16'} 
+        bg-gray-900 text-white flex flex-col p-4 overflow-y-auto
+        ${isMobile && !isSidebarOpen ? '-translate-x-full' : ''}
+      `}
+          style={
+          isMobile 
+            ? { 
+                // top: `${navbarHeight}px`, 
+                height: `calc(100vh - ${navbarHeight + footerHeight}px)`
+              }
+            : {}
+        }
+      >
         <div className="flex items-center justify-between mb-4">
           <button
             className="text-white hover:text-purple-400"
@@ -179,6 +252,7 @@ const headingsFormatted = visible.replace(
     </div>
   </div>
 )}
+{isSidebarOpen && (
 <div className={`transition-all duration-300 bg-green-700 text-white ${humanContact ? "h-60" : "h-10"} mt-auto rounded-md p-2 pb-5`}>
   <div className="flex items-center justify-between">
     <button
@@ -214,9 +288,23 @@ const headingsFormatted = visible.replace(
   )}
 </div>
 
+)}
+
+
       </aside>
       {/* Chat Interface */}
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col relative">
+
+ {isMobile && !isSidebarOpen && (
+          <button
+            className="absolute top-4 left-4 z-10 bg-gray-900 text-white p-2 rounded-md"
+            onClick={() => setIsSidebarOpen(true)}
+          >
+            <ChevronRight />
+          </button>
+        )}
+        
+        
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           {messages.map((msg, index) => {
             if (msg.role === 'ai') {
@@ -254,7 +342,7 @@ const headingsFormatted = visible.replace(
           })}
         </div>
 
-        <form onSubmit={handleSubmit} className="p-4 border-t border-gray-200 dark:border-gray-800">
+        <form onSubmit={handleSubmit} className="sticky bottom-0 p-4 border-t border-gray-200 dark:border-gray-800">
           <div className="flex items-center gap-2">
             <input
               type="text"

@@ -12,8 +12,8 @@ import User from "@/models/User";
 import path from 'path';
 import { head } from '@vercel/blob';
 
+export const maxDuration = 60; // 60 seconds
 
-// app/api/ask/route.js
 
 let vectorStorePromise = null;
 let groq;
@@ -42,7 +42,7 @@ async function loadVectorStore() {
         fs.writeFileSync(path.join(tmpDir, file), data);
       }
 
-      console.log("✅ Vector store downloaded into /tmp");
+      console.log("Vector store downloaded into /tmp");
       return FaissStore.load(tmpDir, embeddings);
     } else {
       return FaissStore.load(path.resolve("./legal_vector_store"), embeddings);

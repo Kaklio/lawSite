@@ -30,13 +30,13 @@ const SignUp = ({ onClose }) => {
 
 
   const handleEmailChange = (e) => {
-    dispatch(updateUserField({ field: "email", value: e.target.value })); // ✅ Update Redux state on input change
+    dispatch(updateUserField({ field: "email", value: e.target.value })); // Update Redux state on input change
   };
   const handleUsernamelChange = (e) => {
-    dispatch(updateUserField({ field: "name", value: e.target.value })); // ✅ Update Redux state on input change
+    dispatch(updateUserField({ field: "name", value: e.target.value })); // Update Redux state on input change
   };
   const handlePasswordChange = (e) => {
-    dispatch(updateUserField({ field: "password", value: e.target.value })); // ✅ Update Redux state on input change
+    dispatch(updateUserField({ field: "password", value: e.target.value })); // Update Redux state on input change
   };
   
 const handleGoogleSignIn = async () => {
@@ -69,7 +69,7 @@ const handleGoogleSignIn = async () => {
 
 
   const toggleSignUpPopUp = () => {
-    dispatch(toggleSignUpBox()) // ✅ Dispatch action to toggle Signup visibility
+    dispatch(toggleSignUpBox()) // Dispatch action to toggle Signup visibility
     dispatch(resetUser())
   }
 
@@ -213,7 +213,7 @@ const accountSubmit = async (e) => {
                 onChange={validateEmail}
                 ref={emailRef}
                 required
-                disabled={emailVerified} // ✅ Disables input if email is verified
+                disabled={emailVerified} // Disables input if email is verified
               />
             </div>
 
@@ -250,7 +250,7 @@ const accountSubmit = async (e) => {
               ref={usernameRef}
               className="w-full p-3 mb-3 bg-gray-800 rounded-lg text-white"
               required
-              // disabled={!emailVerified} // ✅ Disables input if email is not verified
+              // disabled={!emailVerified} // Disables input if email is not verified
             />
             <div className="relative w-full">
               <input
@@ -261,7 +261,7 @@ const accountSubmit = async (e) => {
                 ref={passwordRef}
                 className="w-full p-3 mb-3 bg-gray-800 rounded-lg text-white pr-12"
                 required
-              // disabled={!emailVerified} // ✅ Disables input if email is not verified
+              // disabled={!emailVerified} // Disables input if email is not verified
               />
               <button
                 type="button"

@@ -11,11 +11,10 @@ const SignupBtn = ()  => {
   
   const openLSignupPopup =  () => {
     
-    dispatch(resetUser()); // ✅ Update Redux state on input change   
-    dispatch(toggleSignUpBox()) // ✅ Dispatch action to toggle Signup visibility
+    dispatch(resetUser()); // Update Redux state on input change   
+    dispatch(toggleSignUpBox()) // Dispatch action to toggle Signup visibility
 
     console.log('Signup button clicked');
-
 
   };
   return (

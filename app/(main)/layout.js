@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
-import ProviderWrapper from "@/redux/ProviderWrapper"; // ✅ Import Redux provider
+import ProviderWrapper from "@/redux/ProviderWrapper"; // Import Redux provider
 import SessionWrapper from "@/components/sessionWrapper"
 
 
@@ -29,7 +29,6 @@ export default function MainLayout({ children }) {
           <ProviderWrapper>
             <Navbar />
 
-            {/* This makes the main content grow and push footer down */}
             <main className="flex-1">
               {children}
             </main>

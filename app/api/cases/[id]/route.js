@@ -6,12 +6,11 @@ import User from "@/models/User";
 import File from "@/models/File";
 
 export async function PUT(req, context) {
-  const { params } = await context; // ✅ await context to get params
+  const { params } = await context; // await context to get params
  
   await connectDB();
   const session = await getServerSession(authOptions);
   
-
 
   if (!session?.user) {
     return new Response(JSON.stringify({ error: "Unauthorized" }), { 

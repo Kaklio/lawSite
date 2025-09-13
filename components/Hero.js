@@ -16,10 +16,10 @@ const { data: session } = useSession(); // Get session data
   const [isLoginOpen, setLoginOpen] = useState(false); // State to control Signup visibility
 
   const isSignupOpen = useSelector((state) => state.signUpBox.value)
-  const dispatch = useDispatch() // ✅ Dispatch function
+  const dispatch = useDispatch() // Dispatch function
 
   const toggleSignUpPopUp = () => {
-    dispatch(toggleSignUpBox()) // ✅ Dispatch action to toggle Signup visibility
+    dispatch(toggleSignUpBox()) // Dispatch action to toggle Signup visibility
   }
 
   

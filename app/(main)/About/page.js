@@ -32,7 +32,7 @@ export default function AboutPage() {
                 <section className="flex flex-col md:flex-row items-center gap-8 bg-[#2d2340] rounded-xl p-6 shadow-md">
                     <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-purple-700 shadow-lg">
                         <Image
-                            src="https://static.scientificamerican.com/dam/m/5143ec34ba2d6e3b/original/female-bonobo.jpg?m=1738610578.458&w=1350"
+                            src="/assets/images/CEO.jpg"
                             alt="Founder"
                             fill
                             className="object-cover"

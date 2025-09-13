@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-const codeStorage = new Map(); // Temporary storage (use Redis/DB in production)
+const codeStorage = new Map(); 
 
 export async function POST(request) {
   try {

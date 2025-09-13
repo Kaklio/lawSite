@@ -45,7 +45,7 @@ const [showAddExistingFileModal, setShowAddExistingFileModal] = useState(false);
 
     const { data: session } = useSession();
 
-// Add this useEffect to fetch cases
+// UseEffect to fetch cases
 useEffect(() => {
   const fetchCases = async () => {
     try {
@@ -86,7 +86,7 @@ const handleCreateCase = async () => {
   }
 };
 
-// Add these functions for file management
+// Functions for file management
 const handleAddFileToCase = async (file) => {
   if (!selectedCase) return;
   
@@ -796,6 +796,7 @@ const handleRemoveFileFromCase = async (fileId) => {
               <th className="px-4 py-3">Case Title</th>
               <th className="px-4 py-3">Type</th>
               <th className="px-4 py-3">Files</th>
+              <th className="pl-4 py-3">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -804,7 +805,7 @@ const handleRemoveFileFromCase = async (fileId) => {
     <td className="px-4 py-3 border-t border-purple-700">{caseItem.title}</td>
     <td className="px-4 py-3 border-t border-purple-700">{caseItem.type}</td>
     <td className="px-4 py-3 border-t border-purple-700">{caseItem.files?.length || 0}</td>
-    <td className="px-4 py-3 border-t border-purple-700 text-right">
+    <td className="pr-12 py-3 border-t border-purple-700 text-right">
       <button 
         onClick={(e) => {
           e.stopPropagation();
@@ -921,7 +922,7 @@ const handleRemoveFileFromCase = async (fileId) => {
         <thead className="bg-purple-900/60 text-purple-200">
           <tr>
             <th className="px-4 py-3">File Name</th>
-            {/* <th className="px-4 py-3">Type</th> */}
+            <th className="px-4 py-3">Type</th>
             <th className="px-4 py-3">Actions</th>
           </tr>
         </thead>

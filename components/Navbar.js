@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect, useRef  } from "react";
 import Link from "next/link";
 import SignUp from "./SignUp";
 import Login from "./Login";
@@ -9,7 +9,6 @@ import SignupBtn from "./SignupBtn";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSignUpBox, closeSignUpBox } from "@/states/signUpSlice";
 import { useSession, signOut } from "next-auth/react";
-import { setIsLandscape } from "@/states/screenSlice"; 
 
 
 
@@ -18,6 +17,8 @@ const Navbar = () => {
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
   const isLandscape = useSelector((state) => state.screen.isLandscape);
+  const dropdownRef = useRef(null);
+
 
 
   const isSignupOpen = useSelector((state) => state.signUpBox.value);
@@ -38,6 +39,21 @@ useEffect(() => {
     console.log("Closing Dispatch");
   dispatch(closeSignUpBox());
 };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropDown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+
 
   return (
     <>
@@ -68,7 +84,7 @@ useEffect(() => {
           </Link>
         </ul>
 
-        <div className={`${session ? "" : "hidden"}  md:flex gap-8 my-4 xl:my-0 mx-8`}>
+        <div ref={dropdownRef} className={`${session ? "" : "hidden"}  md:flex  gap-8 my-4 xl:my-0 mx-8`}>
           {/* Show Login/Signup if NOT logged in */}
           {!session ? (
             <>

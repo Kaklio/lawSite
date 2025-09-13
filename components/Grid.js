@@ -79,16 +79,21 @@ useEffect(() => {
       </h2>
 
 {/* Services Grid */}
-<div className={`relative grid  xl:grid-cols-3 gap-2 xl:gap-4 transition-all duration-1000 ease-out
-  ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"} ${isLandscape ? "grid-cols-3" : "grid-cols-2"}`}>
+<div className={`relative grid xl:grid-cols-3 gap-2 xl:gap-4 transition-all duration-1000 ease-out
+  ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"} 
+  ${isLandscape ? "grid-cols-3" : "grid-cols-2"}`}>
   
   {services.map((service, index) => (
-    <Link key={index} href={service.link} onClick={() => console.log("CLICKED!!")}>
-      <div
-        className={`group xl:relative bg-black/95 border border-black text-white xl:text-sm 2xl:text-xl cursor-pointer overflow-hidden 
+    <div
+      key={index}
+      className={`group relative ${index === 8 && !isLandscape ? 'col-span-2 flex justify-center' : ''}`}
+    >
+      <Link 
+        href={service.link}
+        className={`relative bg-black/95 border border-black text-white xl:text-sm 2xl:text-xl cursor-pointer overflow-hidden 
         xl:w-[250px] xl:h-[140px] 2xl:w-[410px] 2xl:h-[242px]
         transition-transform duration-1000 hover:scale-x-105 hover:scale-y-107 bg-cover bg-no-repeat
-        ${index === 8 && !isLandscape ? "w-[196px] h-[112px] absolute left-[66px] xl:left-auto" : "w-[162px] h-[100px]"}`}
+        block w-[162px] h-[100px]`}
         style={{ backgroundImage: `url('/assets/images/${service.href}')` }}
       >
         {/* Service Name with Hover Effects */}
@@ -99,8 +104,8 @@ useEffect(() => {
 
         {/* Dark Hover Effect */}
         <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/40 z-1"></div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   ))}
 </div>
 

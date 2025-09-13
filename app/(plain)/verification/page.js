@@ -34,7 +34,7 @@ const SentinelVerification = () => {
     if(response.ok)
     {
       console.log('Code Confirmed');
-      dispatch(updateUserField({field: "isVerified", value: true}));  // ✅ Update Redux state on input change   
+      dispatch(updateUserField({field: "isVerified", value: true}));  // Update Redux state on input change   
       router.push("/"); //Go back to main page on code verification      
     }
     else{
